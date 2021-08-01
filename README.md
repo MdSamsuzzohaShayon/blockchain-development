@@ -48,6 +48,8 @@ True
 >>> web3.fromWei(balance, 'ether')
 ```
 
+ - [Etherscan](https://etherscan.io/) is a Block Explorer and Analytics Platform for Ethereum, a decentralized smart contracts platform. Preferences. Company. About Us · Advertise .
+
 
 
 
