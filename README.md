@@ -10,6 +10,7 @@ sudo apt install python3-dev
 sudo apt install libpython3.8-dev
 sudo apt install python3-devel
 sudo apt-get install libevent-dev
+sudo apt-get install libgmp-dev
 sudo apt update
 ```
 
