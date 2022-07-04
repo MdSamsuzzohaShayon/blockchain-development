@@ -53,7 +53,7 @@
 
 ### Solidity code 01:29:25
  - [Lesson 1: Welcome to Remix! Simple Storage](https://github.com/smartcontractkit/full-blockchain-solidity-course-py#lesson-1-welcome-to-remix-simple-storage) -> [Github code](https://github.com/PatrickAlphaC/simple_storage) -> [remix ide](https://remix.ethereum.org/#optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.7+commit.e28d00a7.js)
-
+ - https://remix.ethereum.org/#optimize=false&runs=200&evmVersion=null&version=soljson-v0.6.0+commit.26b70077.js
 
 
 
