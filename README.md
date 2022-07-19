@@ -20,6 +20,31 @@
  6. Allow for trust minimized agreements
  7. Hybrid smart contracts combine on and off-chain
 
+### Digital wallet (Metamask) 00:25:00
+ - We must need to backup **Secret Recovery Phrase** in order to keep real money - if anyone has that recovery phrase he will have access to our wallet and all of the funds
+ - Install metamask chrome extension -> create account - account details -> export private key -> download and save private key -> copy address -> scan address with __https://etherscan.io__ or __https://rinkeby.etherscan.io__ (for testing)
+ - One private key is only for one single account of our wallet
+ - Make a tweet with ether address and post the tweet here __https://faucet.rinkeby.io/__ to get free testing ether 
+
+| **Concept** | **Access** | **Public or private** |  |
+|---|---|---|---|
+| Mnemonic | All accounts | Keep Private |  |
+| Private Key | 1 Account | Keep Private |  |
+| Public Address | Nothing | It is public |  |
+
+ - When we work with eth, working with ethereum mainnet when intract with smart contract, d5, or any other mainnet real value to be working on mainnet
+ - There are some testnets to resemble ethereum before using it. Not real money this is just for testing
+
+### Gas 00:36:52
+ - Whenever we do something on the block chain it cost gas. The amount of **gas** used and how much to pay depends on how **computationally expensive** the transaction is.
+ - Gas - Measure of computation use
+ - Gas price - how much it costs per unit of gas
+ - Gas Limit - Max amount of gas in a transaction 
+ - Transaction fees - gas used x gas price
+ - E.g. 21000 gas @ 1 GWEI per gas = 21000 GWEI
+
+### Blockchain demo 00:44:25
+
 ### Concept definations - (01:00:00)
  0. Get ideas of [blockchain](https://andersbrownworth.com/)
  1. **Hash** - Unique fixed length string to identify a peace of data
@@ -35,9 +60,7 @@
 
 
 
-### Testing with rinkeby
- - Install metamask chrome extension -> create account - download and save private key -> copy address -> scan address with __https://etherscan.io__ or __https://rinkeby.etherscan.io__ (for testing)
- - Make a tweet with ether address and post the tweet here __https://faucet.rinkeby.io/__ to get free testing ether 
+
 
 - Attacks - 01:19:28
 - Scalability -> sharding -> layer 1: base layer blockchain implementation -> layer 2: any application that is build on top of a layer 2 - 01:25:32
@@ -53,7 +76,15 @@
 
 ### Solidity code 01:29:25
  - [Lesson 1: Welcome to Remix! Simple Storage](https://github.com/smartcontractkit/full-blockchain-solidity-course-py#lesson-1-welcome-to-remix-simple-storage) -> [Github code](https://github.com/PatrickAlphaC/simple_storage) -> [remix ide](https://remix.ethereum.org/#optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.7+commit.e28d00a7.js)
- - https://remix.ethereum.org/#optimize=false&runs=200&evmVersion=null&version=soljson-v0.6.0+commit.26b70077.js
+ - [Lesson 2: Storage Factory 02:09:30](https://github.com/PatrickAlphaC/storage_factory) 
+ - [Lesson 3: fund me 02:26:30](https://github.com/smartcontractkit/full-blockchain-solidity-course-py#lesson-3-fund-me)
+ - [Chainlink](https://data.chain.link/)
+
+
+Rivision 02:26:00
+Till 02:52:53
+
+
 
 
 
