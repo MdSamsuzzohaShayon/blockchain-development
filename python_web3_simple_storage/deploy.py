@@ -41,12 +41,12 @@ bytecode = compiled_sol["contracts"]["SimpleStorage.sol"]["SimpleStorage"]["evm"
 abi = compiled_sol["contracts"]["SimpleStorage.sol"]["SimpleStorage"]["abi"]
 # print(abi)
 
-# for connecting to ganache - simulated fake blockchain
-w3 = Web3(Web3.HTTPProvider("http://127.0.0.1:8545"))  # rpc server
-chain_id = w3.eth.chain_id  # network id
-my_address = (
-    "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1"  # use a fake address from ganache
-)
+# for connecting to rinkeby - simulated fake blockchain
+w3 = Web3(
+    Web3.HTTPProvider("https://rinkeby.infura.io/v3/152f73e788284076be9b2673b1aff7ca")
+)  # In infura -> create project / keys -> endpoints -> network endpoints -> rinkeby
+chain_id = 4  # Boba Network Rinkeby Testnet - https://chainlist.org/chain/4
+my_address = "0x459b23aE775b440eED6aE098926D5CFc1bBe80c8"  # use a real address from metamask account
 
 
 # Set up private on linux or macos terminal Once we close the terminal the key will be gone

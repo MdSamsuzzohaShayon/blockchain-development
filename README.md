@@ -100,6 +100,10 @@
  python3 deploy.py
  ```
  - [Install web3.py](https://pypi.org/project/web3/) `pip install web3`
+ - Intract with real network / mainnet instead of testnet (04:23:00)
+ - Run [geth](https://github.com/ethereum/go-ethereum) external library to run bloackchain for us
+ - Get blockchain url for free using [infura](https://infura.io/). alternative: [alchemy](https://www.alchemy.com/)
+ - In infura -> create project / keys -> endpoints -> network endpoints -> rinkeby
 
 
 
