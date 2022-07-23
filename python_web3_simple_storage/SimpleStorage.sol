@@ -16,8 +16,9 @@ contract SimpleStorage {
 
     // First function
     // State Variable Visibility - https://docs.soliditylang.org/en/v0.8.13/contracts.html#visibility-and-getters
-    function store(uint256 _favoriteNum) public {
+    function store(uint256 _favoriteNum) public returns (uint256){
         defaultInit = _favoriteNum;
+        return _favoriteNum;
     }
 
     // Functions can be declared view in which case they promise not to modify the state. - https://docs.soliditylang.org/en/v0.8.13/contracts.html#view-functions
@@ -50,4 +51,4 @@ contract SimpleStorage {
     }
 }
 
-// Tutorial Timeframe  01:30:50 - 02-09-00
+

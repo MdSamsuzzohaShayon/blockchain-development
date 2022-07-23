@@ -78,11 +78,35 @@
  - [Lesson 1: Welcome to Remix! Simple Storage](https://github.com/smartcontractkit/full-blockchain-solidity-course-py#lesson-1-welcome-to-remix-simple-storage) -> [Github code](https://github.com/PatrickAlphaC/simple_storage) -> [remix ide](https://remix.ethereum.org/#optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.7+commit.e28d00a7.js)
  - [Lesson 2: Storage Factory 02:09:30](https://github.com/PatrickAlphaC/storage_factory) 
  - [Lesson 3: fund me 02:26:30](https://github.com/smartcontractkit/full-blockchain-solidity-course-py#lesson-3-fund-me)
+ - [Lesson 4: Simple Storage Python 03:32:50](https://github.com/PatrickAlphaC/web3_py_simple_storage)
  - [Chainlink](https://data.chain.link/)
+
+### Deploy with python on local environment 03:28:00
+ - [**Ganache**](https://trufflesuite.com/ganache/) - Quickly fire up a personal Ethereum blockchain which you can use to run tests, execute commands, and inspect state while controlling how the chain operates.
+ - Download, install and quickstart ganache desktop - (03:50:00)
+ - We can also use ganache cli - (04:18:00) (more friendly for programmer)
+    ```
+    sudo npm install --global yarn
+    yarn global add ganache-cli
+    // or
+    sudo npm install --global ganache-cli
+    ganache --version
+    ```
+ - deploy with ganache cli in terminal
+ ```
+ # keep ganache cli running
+ ganache -d
+ # run the code on another terminal or tab
+ python3 deploy.py
+ ```
+ - [Install web3.py](https://pypi.org/project/web3/) `pip install web3`
+
+
+
 
 
 Rivision 02:26:00
-Till 02:52:53
+Till 03:44:00
 
 
 
