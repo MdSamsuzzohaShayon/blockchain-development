@@ -97,7 +97,7 @@ print("deployed!")
 # Working with contract - contract need two things
 # 1 - Contract address
 # 2 - Contract ABI
-simple_storage = w3.eth.contract(address=tx_receipt.contractAddress, abi=abi)
+simple_storage = w3.eth.contract(address="address", abi=abi)
 # there is a retrive function in SimpleStorage.sol
 # Call  -> Simulate making the call and retrive a return value
 # Transace -> actually make a state change
