@@ -17,6 +17,13 @@ def deploy_simple_storage():
 
     account = accounts[0]
     simple_storage = SimpleStorage.deploy({"from": account})
+    stored_value = simple_storage.retrive()
+    print(stored_value)
+    transaction = simple_storage.store(15, {"from": account})
+    transaction.wait(1)
+    updated_store = simple_storage.retrive()
+    print(updated_store)
+
 
 
 
