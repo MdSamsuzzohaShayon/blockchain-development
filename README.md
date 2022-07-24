@@ -105,12 +105,33 @@
  - Get blockchain url for free using [infura](https://infura.io/). alternative: [alchemy](https://www.alchemy.com/)
  - In infura -> create project / keys -> endpoints -> network endpoints -> rinkeby
 
+ - [Brownie](https://github.com/eth-brownie/brownie) Simple Storage (04:27:43)  - A Python-based development and testing framework for smart contracts targeting the Ethereum Virtual Machine.
+ - deactivate virtual environment and [install brownie](https://github.com/eth-brownie/brownie#installation)
+ - Initialize the project with `brownie init`
+ ```
+   brownie init
+   brownie compile
+   brownie
+   brownie run scripts/deploy.py 
+ ```
+ - Add our account to brownie with metamask private key (most secure way)
+ ```
+   brownie accounts new brownie-shayon-account
+   brownie accounts list
+   brownie run scripts/deploy.py
+   brownie accounts delete brownie-shayon-account
+
+ ```
+  - Should not put private keys associated with wallets and that have real in them as environment variable or in a dot env file, We can do this for test account
+  - For more serious serious account we are going to use encryption with brownie account
+  - modify Brownie’s default behaviours by creating an optional [configuration file](https://eth-brownie.readthedocs.io/en/stable/config.html). The configuration file must be saved as **brownie-config.yaml**
+
 
 
 
 
 Rivision 02:26:00
-Till 03:44:00
+Till 04:35:00
 
 
 
