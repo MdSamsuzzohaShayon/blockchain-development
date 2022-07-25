@@ -1,8 +1,8 @@
 from brownie import network, config, accounts, MockV3Aggregator
 from web3 import Web3 
 
-DECIMALS  = 18
-STARTING_PRICE = 2000
+DECIMALS  = 8
+STARTING_PRICE = 200000000000
 LOCAL_BLOCKCHAIN_ENVIRONMENTS = {"development", "ganache-local"}
 
 

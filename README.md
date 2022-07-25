@@ -233,6 +233,7 @@ brownie run scripts/deploy.py --network rinkeby
  brownie networks modify ganache-local chainid=1337
  brownie run scripts/deploy.py --network ganache-local
  ```
+ - Intract with it (withdraw and funds) (05:42:00)
 
 
 Rivision 02:26:00
