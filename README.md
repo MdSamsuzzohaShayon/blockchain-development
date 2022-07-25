@@ -218,5 +218,27 @@ brownie run scripts/deploy.py --network rinkeby
  shayon@shayon-X556UQK:~/Documents/python-blockchain/03_brownie_simple_storage/brownie_project$
 ```
 
+### Fund me project with brownie (05:06:20)
+
+ - Unlink remix brownie on local machine does not understand npm package, so we have to add [brownie chainlink contract](https://github.com/smartcontractkit/chainlink-brownie-contracts)
+ - Verify start contract - there are two different ways 1. manually 2. programmatically
+ - **Manually** - go to __https://rinkeby.etherscan.io__ -> search with contract address -> Contract -> click on Verify and Publish link -> 
+ - **Programmatically** - Go to etherscan.io -> signup -> sign in - my profile -> api keys ->  to get api key
+ - We need that API key to programmatically verify our smart contract on etherscan
+ - Deploing mocsk, deploing on local ganache, deploying on rinkeby network
+ ```
+ brownie networks list
+ brownie add Ethereum ganache-local host=http://127.0.0.1:7545 chainid=1337
+ # Keep ganache desktop open
+ brownie networks modify ganache-local chainid=1337
+ brownie run scripts/deploy.py --network ganache-local
+ ```
+
+
 Rivision 02:26:00
-Till 04:59:00
+Till 05:35:00
+
+### More 
+ - [Build a Blockchain with Python & FastAPI](https://www.youtube.com/watch?v=G5M4bsxR-7E)
+ - [Blockchain Programming with Python: Free Bonus Lessons](https://www.youtube.com/watch?v=nhA9I_RYxgQ)
+curl -d "address=MY_CONTRACT_ADDRESS" "https://api-ropsten.etherscan.io/api?module=contract&action=verifyproxycontract&apikey=H1AD2KZ9Q7IUZ67YF5CUTFCCT3P2DWIQ89"

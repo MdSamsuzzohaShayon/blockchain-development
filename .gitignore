@@ -1,10 +1,17 @@
 /virtual-env
 /02_python_web3_simple_storage/.env
 
-# brownine project
 .idea
+
+# brownine project
 /03_brownie_simple_storage/brownie_project/.env
 /03_brownie_simple_storage/brownie_project/.history
 /03_brownie_simple_storage/brownie_project/.hypothesis/
 /03_brownie_simple_storage/brownie_project/build/
 /03_brownie_simple_storage/brownie_project/reports/
+
+/04_brownie_fund_me/brownie_project/.env
+/04_brownie_fund_me/brownie_project/.history
+/04_brownie_fund_me/brownie_project/.hypothesis/
+/04_brownie_fund_me/brownie_project/build/
+/04_brownie_fund_me/brownie_project/reports/
