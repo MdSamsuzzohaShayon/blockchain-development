@@ -17,13 +17,19 @@
 
 ### Characteristics 00:15:06
 
-1.  Decentralized - there is no centralized source that controls the blockchain, the individuals that make up blockchain are known as node operators
-2.  Transparent - Everything that's done on a blockchain and all the rules that are made can be seen by everyone
-3.  Speed
-4.  Immutable - Blockchains are immutable which means they can't be changed. Because of this they can't be tampered with or corrumted in any way shape
-5.  Remove counterparty risk
-6.  Allow for trust minimized agreements
-7.  Hybrid smart contracts combine on and off-chain
+1. Decentralized: Blockchain operates without a central authority, with network participants called node operators collectively maintaining and validating transactions.
+
+2. Transparent: All transactions and rules on the blockchain are visible to everyone, promoting accountability and trust among users.
+
+3. Speed: Transaction speed varies across blockchain networks and depends on factors like architecture and volume, with some aiming for faster processing times.
+
+4. Immutable: Once recorded, data on the blockchain cannot be altered, ensuring the integrity and security of the information.
+
+5. Remove Counterparty Risk: Blockchain eliminates the need for intermediaries, reducing counterparty risk associated with traditional systems.
+
+6. Allow for Trust-Minimized Agreements: Smart contracts enable parties to execute agreements without relying on trust in a central authority, automatically enforcing terms.
+
+7.Hybrid Smart Contracts: These contracts combine both on-chain and off-chain elements, offering flexibility while leveraging blockchain security and transparency.
 
 ### Digital wallet (Metamask) 00:25:00
 
@@ -40,6 +46,32 @@
 
 - When we work with eth, working with ethereum mainnet when intract with smart contract, d5, or any other mainnet real value to be working on mainnet
 - There are some testnets to resemble ethereum before using it. Not real money this is just for testing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Completed till 35.00
+
+
+
+
+
+
+
+
+
+
+
 
 ### Gas 00:36:52
 
