@@ -1,8 +1,8 @@
 # Python Blockchain
 
-- [tutorials](https://www.youtube.com/watch?v=M576WGiDBdQ&t=2627s), [docs](https://github.com/smartcontractkit/full-blockchain-solidity-course-py)
+- [tutorials](https://www.youtube.com/watch?v=umepbfKp5rI&t=3756s), [Tutorial docs](https://github.com/Cyfrin/foundry-full-course-f23), [docs](https://soliditylang.org/)
 
-### Blockchain 00:06:25
+### Blockchain
 
 - **Bitcoin** was the first one to take blockchain mainstream
 - **Bitcoin** is like digital gold
@@ -15,7 +15,14 @@
 - The ethereum protocol has given rise to many new paradigms and industries including d5, nfts, dows or decentralized
 - **Hybrid Smart Contract** combine on-chain and off-chain components
 
-### Characteristics 00:15:06
+ - [Overview - 38:23](https://youtu.be/umepbfKp5rI?t=2304)
+ - [Making a transaction - 46:55](https://youtu.be/umepbfKp5rI?t=2815)
+
+### Explanation 
+ - [Explain with example - 24:25](https://youtu.be/umepbfKp5rI?t=1467)
+
+### Characteristics 
+
 
 1. Decentralized: Blockchain operates without a central authority, with network participants called node operators collectively maintaining and validating transactions.
 
@@ -34,59 +41,45 @@
 ### Digital wallet (Metamask) 00:25:00
 
 - We must need to backup **Secret Recovery Phrase** in order to keep real money - if anyone has that recovery phrase he will have access to our wallet and all of the funds
-- Install metamask chrome extension -> create account - account details -> export private key -> download and save private key -> copy address -> scan address with **https://etherscan.io** or **https://rinkeby.etherscan.io** (for testing)
+- Install metamask chrome extension -> create account - account details -> export private key -> download and save private key -> copy address -> scan address with **https://etherscan.io** or **sepolia.etherscan.io** (for sepolia test net)
 - One private key is only for one single account of our wallet
-- Make a tweet with ether address and post the tweet here **https://faucet.rinkeby.io/** to get free testing ether
+- Go to **https://faucets.chain.link/** conect to matamask -> login via Github -> send to our wallet
 
 | **Concept**    | **Access**   | **Public or private** |     |
 | -------------- | ------------ | --------------------- | --- |
-| Mnemonic       | All accounts | Keep Private          |     |
-| Private Key    | 1 Account    | Keep Private          |     |
-| Public Address | Nothing      | It is public          |     |
+| Mnemonic / Secret Phrase       | (*Keep private*) All accounts | Person X can send transactions from **any account** created in your metamask / wallet          |     |
+| Private Key    | 1 Account    | (*Keep Private*) Person X can send transactions from any **one account** created in your metamask / wallet          |     |
+| Public Address | Nothing      | Person X can see your transaction history         |     |
 
 - When we work with eth, working with ethereum mainnet when intract with smart contract, d5, or any other mainnet real value to be working on mainnet
 - There are some testnets to resemble ethereum before using it. Not real money this is just for testing
 
+### Gas and transaction fees
 
-
-
-
-
-
-
-
-
-
-
-
-
-Completed till 35.00
-
-
-
-
-
-
-
-
-
-
-
-
-### Gas 00:36:52
-
-- Whenever we do something on the block chain it cost gas. The amount of **gas** used and how much to pay depends on how **computationally expensive** the transaction is.
-- Gas - Measure of computation use
+- Whenever we do something on the block chain it cost [gas](https://youtu.be/umepbfKp5rI?t=6169). The amount of **gas** used and how much to pay depends on how **computationally expensive** the transaction is.
+- Gas - [Measure of computation use](https://youtu.be/umepbfKp5rI?t=4120), more instructions takes more gas. in other ward, for complex transaction such as minting and NFT takes more gas
 - Gas price - how much it costs per unit of gas
 - Gas Limit - Max amount of gas in a transaction
-- Transaction fees - gas used x gas price
+- [Transaction fees](https://youtu.be/umepbfKp5rI?t=4010) - gas used x gas price
 - E.g. 21000 gas @ 1 GWEI per gas = 21000 GWEI
 
-### Blockchain demo 00:44:25
+ - To [convert Ether](https://eth-converter.com/) to Gwei and Wei, you need to understand their relative values.
+ - 1 Ether (ETH) = 1,000,000,000 Gwei 1 Gwei = 1,000,000 Wei
+ - So, to convert from Ether to Gwei, you multiply the amount of Ether by 1,000,000,000, and to convert from Ether to Wei, you multiply by 1,000,000,000,000,000,000.
+ - Here are the conversion formulas:
+ - Ether to Gwei: Gwei=Ether×1,000,000,000Gwei=Ether×1,000,000,000
+ - Ether to Wei: Wei=Ether×1,000,000,000,000,000,000Wei=Ether×1,000,000,000,000,000,000
+ - For example, if you have 2 Ether, to convert it into Gwei and Wei:
+ - Converting to Gwei: Gwei=2×1,000,000,000=2,000,000,000 GweiGwei=2×1,000,000,000=2,000,000,000 Gwei
+ - Converting to Wei: Wei=2×1,000,000,000,000,000,000=2,000,000,000,000,000,000 WeiWei=2×1,000,000,000,000,000,000=2,000,000,000,000,000,000 Wei
+ - So, 2 Ether is equal to 2,000,000,000 Gwei and 2,000,000,000,000,000,000 Wei.
 
-### Concept definations - (01:00:00)
+### Blockchain demo
+- [Basics - 01:31:05](https://youtu.be/umepbfKp5rI?t=5465)
 
-0.  Get ideas of [blockchain](https://andersbrownworth.com/)
+### Concept definations
+
+0.  Get ideas of [blockchain intractivly](https://andersbrownworth.com/). [Explain blockchain](https://youtu.be/umepbfKp5rI?t=4556)
 1.  **Hash** - Unique fixed length string to identify a peace of data
 2.  **Hash Algorithms** - A function that computes data into a unique hash
 3.  **Mining** - the process of finding solutions to the blockchain problem. e.g. The problem to find a hash that starts with 4 zeros. nodes get paid for mining block.
@@ -94,12 +87,33 @@ Completed till 35.00
 5.  **Decentralized** - having no single point of authority
 6.  **Nonce** - a number used once to find the solution to the blockchain problem. It's also used to define the transaction number for an account/address.
 7.  **Nonce** - a number used once to find the solution to the blockchain problem.
+8. **The [genesis block - 01:22:00](https://youtu.be/umepbfKp5rI?t=4942)** is the first block in a blockchain network. It serves as the foundation for the entire blockchain and is unique because it does not reference a previous block. Instead, it is hardcoded into the software of the blockchain network and is typically created by the creator(s) of the blockchain.
 8.  **Private key** - Only known to the key holder, it is used to sign transactions
 9.  **Public key** - is derived from private key. Anyone can see it, and use it to verify that a transaction came from.
 10. Private key -> public key -> address
 
-- Attacks - 01:19:28
-- Scalability -> sharding -> layer 1: base layer blockchain implementation -> layer 2: any application that is build on top of a layer 2 - 01:25:32
+- [Attacks](https://youtu.be/umepbfKp5rI?t=7721)
+- Scalability -> sharding -> layer 1: base layer blockchain implementation such as block chain -> layer 2: any application that is build on top of a layer 2 such chainlink
+ - *Attacks:* Refers to malicious activities aimed at disrupting or manipulating a blockchain network. Examples include double-spending attacks, where a user spends the same digital asset twice, or a denial-of-service attack, where the network is overwhelmed with traffic to halt operations.
+ - *Proof of Work (PoW):* A consensus mechanism used in blockchain networks to validate and confirm transactions. Miners compete to solve complex mathematical puzzles, and the first one to solve it gets the right to add a new block to the blockchain. Bitcoin is a prominent example of a blockchain that uses PoW.
+ - *Proof of Stake (PoS):* Another consensus mechanism where the creator of the next block is chosen via various combinations of random selection and wealth or age (i.e., the stake). Ethereum is transitioning to PoS with its Ethereum 2.0 upgrade. In PoS, validators are chosen to create blocks based on the number of coins they hold and are willing to "stake" as collateral.
+ - *51% Attack:* A situation where a single entity or a group controls over 51% of the network's mining power, enabling them to manipulate transactions, double-spend coins, or halt the network's operations. It undermines the decentralization and security of a blockchain. For instance, if a single miner or coalition of miners controls the majority of the network's computational power in a PoW system, they could potentially execute a 51% attack.
+ - *Sharding:* A technique used to improve the scalability of blockchain networks by partitioning the database into smaller, more manageable parts called shards. Each shard contains its subset of transaction history and smart contracts, allowing for parallel processing. Ethereum 2.0 is implementing sharding to enhance its scalability.
+ - *Rollups:* A scaling solution for Ethereum and other blockchains that aggregates multiple transactions off-chain into a single transaction on-chain. This helps reduce the computational load and transaction fees while maintaining security. Rollups can be implemented in different ways, such as Optimistic Rollups and zkRollups.
+ - *Layer 1:* The base layer of a blockchain protocol, where fundamental consensus and validation mechanisms reside. Examples include Bitcoin and Ethereum mainnets. Changes or upgrades to the layer 1 protocol require a hard fork, which can be contentious and disruptive.
+ - *Layer 2:* Additional protocols or solutions built on top of layer 1 blockchains to improve scalability, speed, and functionality. Layer 2 solutions include payment channels (e.g., Lightning Network for Bitcoin), sidechains, and off-chain computation platforms (e.g., Plasma for Ethereum). They aim to handle a significant portion of transactions off-chain, reducing congestion and fees on the layer 1 blockchain. 
+
+### Consensus Mechanism
+ - Certainly, [consensus mechanisms](https://youtu.be/umepbfKp5rI?t=6980) play a critical role in blockchain networks, ensuring that all participants agree on the state of the network and the validity of transactions. Let's delve deeper into "Chain Selection" and "Sybil Resistance":
+ 1. Chain Selection:
+    - Definition: Chain selection is the process by which nodes in a blockchain network decide which chain of blocks to follow as the correct one.
+    - Importance: It ensures that all participants in the network agree on the same version of the truth, resolving conflicts when multiple valid blocks are proposed simultaneously.
+    - Example: In Bitcoin, the longest chain with the most accumulated computational work (Proof of Work) is considered the valid one.
+ 2. Sybil Resistance:
+    - Definition: Sybil resistance is the network's ability to resist attacks where a single entity creates multiple fake identities to manipulate the network.
+    - Importance: It prevents malicious actors from overwhelming the network and compromising its integrity.
+    - Example: In Proof of Work, miners invest computational power to solve puzzles, while in Proof of Stake, participants must stake cryptocurrency as collateral.
+- Both concepts are vital for ensuring the security, integrity, and decentralization of blockchain networks.
 
 ### Reacp 01:28:00
 
