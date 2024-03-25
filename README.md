@@ -125,6 +125,15 @@
 - Sharding and rollups are scalability solutions
 - Only so many transactions can fit into a block
 
+### Layer 2
+ - Layer 2 refers to secondary frameworks or protocols built on top of existing blockchain networks like Ethereum. These solutions aim to improve scalability and reduce transaction costs by processing transactions off-chain or in a more efficient manner, while still leveraging the security of the underlying blockchain when necessary.
+ - **EVM (Ethereum Virtual Machine):** EVM is the runtime environment for smart contracts in Ethereum. It executes smart contracts' bytecode and is responsible for the decentralized execution of code.
+ - **Ethereum:** Ethereum is a decentralized platform that enables developers to build and deploy smart contracts and decentralized applications (DApps). It's based on blockchain technology and utilizes the EVM for executing smart contracts.
+ - **Polygon:** Polygon is a protocol and framework for building and connecting Ethereum-compatible blockchain networks. It aims to improve Ethereum's scalability, making it more efficient for decentralized applications and transactions.
+ - **Arbitrum:** Arbitrum is a layer 2 scaling solution for Ethereum. It uses rollups to increase transaction throughput and reduce fees on the Ethereum network, while maintaining compatibility with Ethereum smart contracts.
+ - **Optimism:** Optimism is another layer 2 scaling solution for Ethereum. It employs optimistic rollups to enhance scalability and reduce transaction costs by aggregating multiple transactions off-chain before committing them to the Ethereum blockchain.
+ - **Zksync:** Zksync is a layer 2 scaling solution for Ethereum focused on using zero-knowledge proofs to enable fast and low-cost transactions off-chain while maintaining the security guarantees of the Ethereum blockchain.
+
 ### Solidity code 01:29:25
 
 - [Lesson 1: Welcome to Remix! Simple Storage](https://github.com/smartcontractkit/full-blockchain-solidity-course-py#lesson-1-welcome-to-remix-simple-storage) -> [Github code](https://github.com/PatrickAlphaC/simple_storage) -> [remix ide](https://remix.ethereum.org/#optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.7+commit.e28d00a7.js)
@@ -282,10 +291,26 @@ brownie run scripts/deploy.py --network rinkeby
  - Intract with it (withdraw and funds) (05:42:00)
 
 
-Rivision 02:26:00
-Till 05:35:00
+### Resources For This Course
+  AI Frens
+  ChatGPT
+  Just know that it will often get things wrong, but it's very fast!
+  Phind
+  Like ChatGPT, but it searches the web
+  Bard
+  Other AI extensions
+  Github Discussions
+  Ask questions and chat about the course here!
+  Stack Exchange Ethereum
+  Great place for asking technical questions about Ethereum
+  Peeranha
+  Decentralized Stack Exchange!
 
 ### More 
  - [Build a Blockchain with Python & FastAPI](https://www.youtube.com/watch?v=G5M4bsxR-7E)
  - [Blockchain Programming with Python: Free Bonus Lessons](https://www.youtube.com/watch?v=nhA9I_RYxgQ)
 curl -d "address=MY_CONTRACT_ADDRESS" "https://api-ropsten.etherscan.io/api?module=contract&action=verifyproxycontract&apikey=H1AD2KZ9Q7IUZ67YF5CUTFCCT3P2DWIQ89"
+
+
+Till 03:08:00 - https://youtu.be/umepbfKp5rI?t=11296
+Rivision 01:00:00
