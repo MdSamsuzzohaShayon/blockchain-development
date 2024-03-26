@@ -312,5 +312,5 @@ brownie run scripts/deploy.py --network rinkeby
 curl -d "address=MY_CONTRACT_ADDRESS" "https://api-ropsten.etherscan.io/api?module=contract&action=verifyproxycontract&apikey=H1AD2KZ9Q7IUZ67YF5CUTFCCT3P2DWIQ89"
 
 
-Till 03:08:00 - https://youtu.be/umepbfKp5rI?t=11296
-Rivision 01:00:00
+Till 03:08:00 - https://youtu.be/umepbfKp5rI?t=14285
+Rivision 01:30:00 - https://youtu.be/umepbfKp5rI?t=5454
