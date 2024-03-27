@@ -21,6 +21,12 @@
 ### Explanation 
  - [Explain with example - 24:25](https://youtu.be/umepbfKp5rI?t=1467)
 
+### Chainlink
+ - [Chainlink Data Feeds](https://docs.chain.link/data-feeds) are the quickest way to connect your smart contracts to the real-world data such as asset prices, reserve balances, NFT floor prices, and L2 sequencer health
+ - [Chainlink VRF](https://docs.chain.link/vrf) (Verifiable Random Function) is a provably fair and verifiable random number generator (RNG) that enables smart contracts to access random values without compromising security or usability. 
+ - To [consume price data](https://docs.chain.link/data-feeds/using-data-feeds#solidity), your smart contract should reference AggregatorV3Interface, which defines the external functions implemented by Data Feeds.
+ - [Chainlink Functions](https://docs.chain.link/chainlink-functions) provides your smart contracts access to trust-minimized compute infrastructure, allowing you to fetch data from APIs and perform custom computation.
+
 ### Characteristics 
 
 
@@ -312,5 +318,5 @@ brownie run scripts/deploy.py --network rinkeby
 curl -d "address=MY_CONTRACT_ADDRESS" "https://api-ropsten.etherscan.io/api?module=contract&action=verifyproxycontract&apikey=H1AD2KZ9Q7IUZ67YF5CUTFCCT3P2DWIQ89"
 
 
-Till 03:08:00 - https://youtu.be/umepbfKp5rI?t=14285
+Till 03:08:00 - https://youtu.be/umepbfKp5rI?t=14943
 Rivision 01:30:00 - https://youtu.be/umepbfKp5rI?t=5454
