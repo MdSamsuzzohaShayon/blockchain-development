@@ -1,9 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.19;
 
-
-import {AggregatorV3Interface} from "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
-
+import {PriceConverter} from "./PriceConverter.sol";
 
 /**
  * Get funds from users (minimum 5 USD)
@@ -11,10 +9,23 @@ import {AggregatorV3Interface} from "@chainlink/contracts/src/v0.8/shared/interf
  * Set a minimum funding value in USD
  */
 
-
 contract FundMe {
+    using PriceConverter for uint256;
+
     uint256 public myVal = 1;
-    uint256 public minUSD = 5;
+    uint256 public minUSD = 5e18;
+
+    address[] public funders;
+    /**
+     * 04:59:00 - https://youtu.be/umepbfKp5rI?t=17958
+     * https://docs.soliditylang.org/en/v0.8.7/types.html#mapping-types
+     * Mapping Types
+     * Mapping types use the syntax mapping(_KeyType => _ValueType) and variables of mapping type are declared using the syntax mapping(_KeyType => _ValueType) _VariableName.
+     * The _KeyType can be any built-in value type, bytes, string, or any contract or enum type. Other user-defined or complex types, such as mappings, structs or array types are not allowed.
+     * _ValueType can be any type, including mappings, arrays and structs.
+     */
+    mapping(address funder => uint256 amountFunded)
+        public addressToAmountFunded;
     /**
      * address payable: Same as address, but with the additional members transfer and send.
      * https://docs.soliditylang.org/en/v0.8.25/types.html#address
@@ -42,40 +53,23 @@ contract FundMe {
      * https://docs.chain.link/chainlink-nodes
      */
 
-     // Recap- 4:36:22 https://youtu.be/umepbfKp5rI?t=16582
+    // Recap- 4:36:22 https://youtu.be/umepbfKp5rI?t=16582
+    // Set WEI value 10000000000000000 and send
     function fund() public payable {
         myVal = myVal + 2; // This line will be revarted if (msg.value > 1e18) is not true, therefore if it add 2 to myVal it will be revarted to previous value
         // require(msg.value > 1e18, "Didn't send enough ETH!");// 1e18 = 1 ETH = 1000000000000000000 = 1 * 10 ** 18
-        require(msg.value > minUSD, "Didn't send enough ETH!"); // 1e18 = 1 ETH = 1000000000000000000 = 1 * 10 ** 18
+        require(
+            msg.value.getConversionRate(msg.value) > minUSD,
+            "Didn't send enough ETH!"
+        ); // 1e18 = 1 ETH = 1000000000000000000 = 1 * 10 ** 18
+
+        funders.push(msg.sender); // msg.sender (address): sender of the message (current call)
+        addressToAmountFunded[msg.sender] =
+            addressToAmountFunded[msg.sender] +
+            msg.value;
     }
 
     function withdraw() public {}
-
-    function getPrice() public view returns(uint256){
-        /**
-         * To work with an contract we need Address of that contract and ABI
-         * To consume price data, your smart contract should reference AggregatorV3Interface, which defines the external functions implemented by Data Feeds.
-         * https://docs.chain.link/data-feeds/using-data-feeds#solidity
-         * https://github.com/smartcontractkit/chainlink/blob/develop/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol
-         * 
-         * Get address from here https://docs.chain.link/data-feeds/price-feeds/addresses?network=ethereum&page=1
-         * Network: Sepolia Testnet
-         * Aggregator: ETH/USD
-         * Address: 0x694AA1769357215DE4FAC081bf1f309aDC325306
-         */
-
-         AggregatorV3Interface priceFeed = AggregatorV3Interface(0x694AA1769357215DE4FAC081bf1f309aDC325306);
-        ( /* uint80 roundID */, int price, /*uint startedAt*/, /*uint timeStamp*/, /*uint80 answeredInRound*/ ) =priceFeed.latestRoundData();
-        return uint256(price * 1e10);
-    }
-
-    function getConversionRate() public {}
-
-
-    function getVersion() public view returns(uint256){
-        AggregatorV3Interface priceFeed = AggregatorV3Interface(0x694AA1769357215DE4FAC081bf1f309aDC325306);
-        return priceFeed.version();
-    }
 }
 
 /**
@@ -89,5 +83,5 @@ contract FundMe {
  * v,r,s: components of tx signature
  */
 
-// https://youtu.be/umepbfKp5rI?t=16019
+// https://youtu.be/umepbfKp5rI?t=18337
 // $70163.47000000
