@@ -148,7 +148,13 @@
 - [Lesson 4: Simple Storage Python 03:32:50](https://github.com/PatrickAlphaC/web3_py_simple_storage)
 - [Chainlink](https://data.chain.link/)
 
-### Deploy with python on local environment 03:28:00
+### Witdraw
+ - There are 3 different ways to send native blockchain currencies
+ - Transfer
+ - Send
+ - Call
+
+### Deploy with python on local environment
 
 - [**Ganache**](https://trufflesuite.com/ganache/) - Quickly fire up a personal Ethereum blockchain which you can use to run tests, execute commands, and inspect state while controlling how the chain operates.
 - Download, install and quickstart ganache desktop - (03:50:00)
@@ -318,5 +324,5 @@ brownie run scripts/deploy.py --network rinkeby
 curl -d "address=MY_CONTRACT_ADDRESS" "https://api-ropsten.etherscan.io/api?module=contract&action=verifyproxycontract&apikey=H1AD2KZ9Q7IUZ67YF5CUTFCCT3P2DWIQ89"
 
 
-Till 03:08:00 - https://youtu.be/umepbfKp5rI?t=14943
+Till 05:10:00 - https://youtu.be/umepbfKp5rI?t=19770
 Rivision 01:30:00 - https://youtu.be/umepbfKp5rI?t=5454

@@ -26,6 +26,7 @@ contract FundMe {
      */
     mapping(address funder => uint256 amountFunded)
         public addressToAmountFunded;
+
     /**
      * address payable: Same as address, but with the additional members transfer and send.
      * https://docs.soliditylang.org/en/v0.8.25/types.html#address
@@ -53,23 +54,78 @@ contract FundMe {
      * https://docs.chain.link/chainlink-nodes
      */
 
+    /**
+     * 05:24:00 https://youtu.be/umepbfKp5rI?t=19465
+     * Only owner of the contract can withdraw the fund
+     * 
+     * A constructor is optional. Only one constructor is allowed, which means overloading is not supported.
+     */
+
+    address public owner;
+    constructor() {
+        owner = msg.sender;
+    }
+
     // Recap- 4:36:22 https://youtu.be/umepbfKp5rI?t=16582
     // Set WEI value 10000000000000000 and send
     function fund() public payable {
         myVal = myVal + 2; // This line will be revarted if (msg.value > 1e18) is not true, therefore if it add 2 to myVal it will be revarted to previous value
         // require(msg.value > 1e18, "Didn't send enough ETH!");// 1e18 = 1 ETH = 1000000000000000000 = 1 * 10 ** 18
+        // msg.value willbe automitically passed to getConversionRate as first parameter
         require(
-            msg.value.getConversionRate(msg.value) > minUSD,
+            msg.value.getConversionRate() > minUSD,
             "Didn't send enough ETH!"
         ); // 1e18 = 1 ETH = 1000000000000000000 = 1 * 10 ** 18
 
         funders.push(msg.sender); // msg.sender (address): sender of the message (current call)
-        addressToAmountFunded[msg.sender] =
-            addressToAmountFunded[msg.sender] +
-            msg.value;
+        addressToAmountFunded[msg.sender] += msg.value;
     }
 
-    function withdraw() public {}
+    /**
+     * Withdraw Contract
+     * This contract allows funders to withdraw their funds.
+     */
+    function withdraw() public onlyOwner {
+
+        // require(msg.sender == owner, "Must be owner");
+
+        for (uint256 i = 0; i < funders.length; i++) {
+            address funder = funders[i];
+            addressToAmountFunded[funder] = 0;
+        }
+
+        // Reset funders
+        funders = new address[](0);
+        // withdraw
+        /**
+         * https://solidity-by-example.org/sending-ether/
+         * There are 3 different ways to send native blockchain currencies
+         * 1. Transfer: It transfers the contract's balance to the caller (the person who invoked the function).
+         * 2. Send: An alternative way to send funds to the caller. It returns a boolean indicating whether the transfer was successful.
+         * 3. Call: (Rocommended way) Another alternative way to send funds, using a low-level call. It also returns a boolean indicating success and allows sending additional data (though not used in this example).
+         */
+
+        // payable(msg.sender).transfer(address(this).balance); // msg.sender = payable address & payable(msg.sender) = payable address
+
+        // bool sendSuccess = payable(msg.sender).send(address(this).balance); // msg.sender = payable address & payable(msg.sender) = payable address
+        // require(sendSuccess, "Send Failed");
+
+        (bool callSuccess, ) = payable(msg.sender).call{
+            value: address(this).balance
+        }("");
+        // Checks whether the transfer or call was successful. If not, it reverts the transaction with an error message.
+        require(callSuccess, "Call Failed");
+    }
+
+    /**
+     * Modifiers can be used to change the behavior of functions in a declarative way. For example, you can use a modifier to automatically check a condition prior to executing the function.
+     * https://docs.soliditylang.org/en/latest/contracts.html#function-modifiers
+     */
+     modifier onlyOwner(){
+        require(msg.sender == owner, "Owner is not sender!");
+        _; // Rest of the code will run if test passed
+     }
+
 }
 
 /**
@@ -83,5 +139,4 @@ contract FundMe {
  * v,r,s: components of tx signature
  */
 
-// https://youtu.be/umepbfKp5rI?t=18337
-// $70163.47000000
+// Recap: https://youtu.be/umepbfKp5rI?t=17993
