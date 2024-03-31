@@ -168,6 +168,18 @@
  6. Ask on support forum or github
  7. Iterate
 
+### Setup local environment
+ - Install [foundry](https://book.getfoundry.sh/) to run solidity project
+  ```
+  curl -L https://foundry.paradigm.xyz | bash
+  source /home/shayon/.bashrc
+  foundryup
+  forge --version
+  cast --version
+  anvil --version
+  chisel --version
+  ```
+
 ### Deploy with python on local environment
 
 - [**Ganache**](https://trufflesuite.com/ganache/) - Quickly fire up a personal Ethereum blockchain which you can use to run tests, execute commands, and inspect state while controlling how the chain operates.
@@ -338,5 +350,5 @@ brownie run scripts/deploy.py --network rinkeby
 curl -d "address=MY_CONTRACT_ADDRESS" "https://api-ropsten.etherscan.io/api?module=contract&action=verifyproxycontract&apikey=H1AD2KZ9Q7IUZ67YF5CUTFCCT3P2DWIQ89"
 
 
-Till 06:20:12 - https://youtu.be/umepbfKp5rI?t=22814
+Till 06:57:16 - https://youtu.be/umepbfKp5rI?t=25036
 Rivision 01:30:00 - https://youtu.be/umepbfKp5rI?t=5454
