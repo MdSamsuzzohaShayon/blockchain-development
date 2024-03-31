@@ -154,6 +154,20 @@
  - Send
  - Call
 
+### AI & Prompting
+ 1. Tinker
+ 2. Ask your AI
+    There are 6 principles of Prompt engeenring
+      A. Write cean and specific instructions
+      B. Give as uch context as possible
+      C. Use delimiters to clearly indicate distinct parts of the input
+      D. Look out for hallucinations
+ 3. Read docs
+ 4. Web Search
+ 5. Ask in a forum
+ 6. Ask on support forum or github
+ 7. Iterate
+
 ### Deploy with python on local environment
 
 - [**Ganache**](https://trufflesuite.com/ganache/) - Quickly fire up a personal Ethereum blockchain which you can use to run tests, execute commands, and inspect state while controlling how the chain operates.
@@ -324,5 +338,5 @@ brownie run scripts/deploy.py --network rinkeby
 curl -d "address=MY_CONTRACT_ADDRESS" "https://api-ropsten.etherscan.io/api?module=contract&action=verifyproxycontract&apikey=H1AD2KZ9Q7IUZ67YF5CUTFCCT3P2DWIQ89"
 
 
-Till 05:45:00 - https://youtu.be/umepbfKp5rI?t=20719
+Till 06:20:12 - https://youtu.be/umepbfKp5rI?t=22814
 Rivision 01:30:00 - https://youtu.be/umepbfKp5rI?t=5454
