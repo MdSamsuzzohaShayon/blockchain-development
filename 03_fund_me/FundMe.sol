@@ -3,140 +3,90 @@ pragma solidity 0.8.19;
 
 import {PriceConverter} from "./PriceConverter.sol";
 
-/**
- * Get funds from users (minimum 5 USD)
- * Withdraw funds to the owner of the contract
- * Set a minimum funding value in USD
- */
+error NotoOwner();
 
 contract FundMe {
     using PriceConverter for uint256;
 
-    uint256 public myVal = 1;
-    uint256 public minUSD = 5e18;
+    /**
+     * State variables can be declared as constant or immutable. In both cases, the variables cannot be modified after the contract has been constructed. For constant variables, the value has to be fixed at compile-time, while for immutable, it can still be assigned at construction time.
+     * For constant variables, the value has to be a constant at compile time and it has to be assigned where the variable is declared. 
+     * https://docs.soliditylang.org/en/latest/contracts.html#constant
+     * Transaction cost: Gas used before without using constant 853,039 -> optimized gas used 790,344 using constant
+     * Execution cost: Gas used before without using constant 2407 -> optimized gas used 307 using constant for viewing MIN_USD variable 
+     */
+    uint256 public constant MIN_USD = 50 * 1e18;
 
     address[] public funders;
-    /**
-     * 04:59:00 - https://youtu.be/umepbfKp5rI?t=17958
-     * https://docs.soliditylang.org/en/v0.8.7/types.html#mapping-types
-     * Mapping Types
-     * Mapping types use the syntax mapping(_KeyType => _ValueType) and variables of mapping type are declared using the syntax mapping(_KeyType => _ValueType) _VariableName.
-     * The _KeyType can be any built-in value type, bytes, string, or any contract or enum type. Other user-defined or complex types, such as mappings, structs or array types are not allowed.
-     * _ValueType can be any type, including mappings, arrays and structs.
-     */
     mapping(address funder => uint256 amountFunded)
         public addressToAmountFunded;
 
     /**
-     * address payable: Same as address, but with the additional members transfer and send.
-     * https://docs.soliditylang.org/en/v0.8.25/types.html#address
-     * It is important to also provide the`payable` keyword here, otherwise the function will automatically reject all Ether sent to it.
-     * It is often a good idea to use `require` to check if functions are called correctly.
-     * Undo any actions that have been done, and the remaining gas back -> https://youtu.be/umepbfKp5rI?t=15516
-     *
-     * https://docs.soliditylang.org/en/develop/units-and-global-variables.html#block-and-transaction-properties
-     * msg.value (uint): number of wei sent with the message
-     * The values of all members of msg, including msg.sender and msg.value can change for every external function call. This includes calls to library functions.
-     *
-     * https://chain.link/education-hub/oracle-problem
-     * The blockchain oracle problem refers to the inability of blockchains to access external data, making them isolated networks, akin to a computer with no Internet connection. Bridging the connection between the blockchain (onchain) and the outside world (offchain) requires an additional piece of infrastructure—an oracle.
-     * Centralized Blockchain Oracles:
-     *
-     * https://chain.link/education/blockchain-oracles
-     * Blockchain oracles are entities that connect blockchains to external systems, thereby enabling smart contracts to execute based upon inputs and outputs from the real world.
-     *
-     * https://docs.chain.link/data-feeds
-     * Chainlink Data Feeds are the quickest way to connect your smart contracts to the real-world data such as asset prices, reserve balances, NFT floor prices, and L2 sequencer health.
-     * https://data.chain.link/feeds
-     * https://data.chain.link/feeds/ethereum/mainnet/eth-usd
-     *
-     * Operating a Chainlink node allows you to be part of the Chainlink Network, helping developers build hybrid smart contracts, giving them access to real-world data and services.
-     * https://docs.chain.link/chainlink-nodes
+     * Variables declared as immutable are a bit less restricted than those declared 
+     * as constant: Immutable variables can be assigned a value at construction time. 
+     * The value can be changed at any time before deployment and then it becomes permanent.
+     * https://docs.soliditylang.org/en/latest/contracts.html#immutable
+     * i_owner immutable cost 444, i_owner non immutable cost 2580
      */
+    address public immutable i_owner;
 
-    /**
-     * 05:24:00 https://youtu.be/umepbfKp5rI?t=19465
-     * Only owner of the contract can withdraw the fund
-     * 
-     * A constructor is optional. Only one constructor is allowed, which means overloading is not supported.
-     */
-
-    address public owner;
     constructor() {
-        owner = msg.sender;
+        i_owner = msg.sender;
     }
 
-    // Recap- 4:36:22 https://youtu.be/umepbfKp5rI?t=16582
-    // Set WEI value 10000000000000000 and send
     function fund() public payable {
-        myVal = myVal + 2; // This line will be revarted if (msg.value > 1e18) is not true, therefore if it add 2 to myVal it will be revarted to previous value
-        // require(msg.value > 1e18, "Didn't send enough ETH!");// 1e18 = 1 ETH = 1000000000000000000 = 1 * 10 ** 18
-        // msg.value willbe automitically passed to getConversionRate as first parameter
         require(
-            msg.value.getConversionRate() > minUSD,
+            msg.value.getConversionRate() > MIN_USD,
             "Didn't send enough ETH!"
-        ); // 1e18 = 1 ETH = 1000000000000000000 = 1 * 10 ** 18
+        ); 
 
-        funders.push(msg.sender); // msg.sender (address): sender of the message (current call)
+        funders.push(msg.sender);
         addressToAmountFunded[msg.sender] += msg.value;
     }
 
-    /**
-     * Withdraw Contract
-     * This contract allows funders to withdraw their funds.
-     */
     function withdraw() public onlyOwner {
-
-        // require(msg.sender == owner, "Must be owner");
 
         for (uint256 i = 0; i < funders.length; i++) {
             address funder = funders[i];
             addressToAmountFunded[funder] = 0;
         }
 
-        // Reset funders
         funders = new address[](0);
-        // withdraw
-        /**
-         * https://solidity-by-example.org/sending-ether/
-         * There are 3 different ways to send native blockchain currencies
-         * 1. Transfer: It transfers the contract's balance to the caller (the person who invoked the function).
-         * 2. Send: An alternative way to send funds to the caller. It returns a boolean indicating whether the transfer was successful.
-         * 3. Call: (Rocommended way) Another alternative way to send funds, using a low-level call. It also returns a boolean indicating success and allows sending additional data (though not used in this example).
-         */
-
-        // payable(msg.sender).transfer(address(this).balance); // msg.sender = payable address & payable(msg.sender) = payable address
-
-        // bool sendSuccess = payable(msg.sender).send(address(this).balance); // msg.sender = payable address & payable(msg.sender) = payable address
-        // require(sendSuccess, "Send Failed");
 
         (bool callSuccess, ) = payable(msg.sender).call{
             value: address(this).balance
         }("");
-        // Checks whether the transfer or call was successful. If not, it reverts the transaction with an error message.
         require(callSuccess, "Call Failed");
     }
 
+
     /**
-     * Modifiers can be used to change the behavior of functions in a declarative way. For example, you can use a modifier to automatically check a condition prior to executing the function.
-     * https://docs.soliditylang.org/en/latest/contracts.html#function-modifiers
+     * Starting from Solidity v0.8.4, there is a convenient and gas-efficient way to explain to users why an operation failed through the use of custom errors. 
+     * https://soliditylang.org/blog/2021/04/21/custom-errors/
      */
      modifier onlyOwner(){
-        require(msg.sender == owner, "Owner is not sender!");
-        _; // Rest of the code will run if test passed
+        // require(msg.sender == i_owner, "Owner is not sender!");
+        if(msg.sender != i_owner) {revert NotOwner();}
+        _;
      }
+
+     /**
+      * A contract can have at most one receive function, declared using receive() 
+      * external payable { ... } (without the function keyword). This function cannot 
+      * have arguments, cannot return anything and must have external visibility and 
+      * payable state mutability. It can be virtual, can override and can have 
+      * modifiers.The receive function is executed on a call to the contract with 
+      * empty calldata. This is the function that is executed on plain Ether 
+      * transfers (e.g. via .send() or .transfer()). If no such function exists, 
+      * but a payable fallback function exists, the fallback function will be 
+      * called on a plain Ether transfer. If neither a receive Ether nor a payable 
+      * fallback function is present, the contract cannot receive Ether through a 
+      * transaction that does not represent a payable function call and throws an exception.
+      * https://docs.soliditylang.org/en/latest/contracts.html#special-functions
+      */
 
 }
 
-/**
- * Every transaction will have some attribute
- * Nonce: tx count for the account
- * Gas price: price per unit of gas (in wei)
- * Gas Limit: max gas that this tx can use
- * To: address that the tx is sent to
- * Value amount of wei to send
- * Data: what to send to the To address
- * v,r,s: components of tx signature
- */
 
-// Recap: https://youtu.be/umepbfKp5rI?t=17993
+// 05:34:00 https://youtu.be/umepbfKp5rI?t=20079
+
