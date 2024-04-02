@@ -353,3 +353,7 @@ curl -d "address=MY_CONTRACT_ADDRESS" "https://api-ropsten.etherscan.io/api?modu
 
 Till 06:57:16 - https://youtu.be/umepbfKp5rI?t=25036
 Rivision 01:30:00 - https://youtu.be/umepbfKp5rI?t=5454
+
+### More
+ - https://www.youtube.com/watch?v=jcgfQEbptdo
+ - https://www.youtube.com/watch?v=jcgfQEbptdo
