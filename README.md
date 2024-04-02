@@ -179,6 +179,7 @@
   anvil --version
   chisel --version
   ```
+ - To start a [new project](https://book.getfoundry.sh/projects/creating-a-new-project) with Foundry, use `forge init`:
 
 ### Deploy with python on local environment
 
