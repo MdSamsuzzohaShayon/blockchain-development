@@ -1,1 +1,4 @@
 /05_foundry-simple-storage/.env
+/05_foundry-simple-storage/broadcast
+/05_foundry-simple-storage/cache
+/05_foundry-simple-storage/out
