@@ -1,0 +1,3 @@
+[submodule "06_foundry-fund-me/lib/forge-std"]
+	path = 06_foundry-fund-me/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
