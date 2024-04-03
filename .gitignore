@@ -2,3 +2,8 @@
 /05_foundry-simple-storage/broadcast
 /05_foundry-simple-storage/cache
 /05_foundry-simple-storage/out
+
+/06_foundry-fund-me/.env
+/05_foundry-fund-me/broadcast
+/05_foundry-fund-me/cache
+/05_foundry-fund-me/out
