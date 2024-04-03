@@ -1,5 +1,7 @@
 ## Foundry
 
+ - [07:10:00](https://youtu.be/sas02qSFZ74?t=431) Installing packages 
+
 **Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
 
 Foundry consists of:
