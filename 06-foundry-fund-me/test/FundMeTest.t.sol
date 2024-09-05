@@ -12,12 +12,19 @@ contract FundMeTest is Test{
     // uint256 num = 1;
     FundMe fundMe;
 
+    // Create fake address - https://book.getfoundry.sh/reference/forge-std/make-addr
+    address USER = makeAddr("user");
+    uint256 constant SEND_VALUE = 0.1 ether;
+    uint256 constant STARTING_BALANCE = 10 ether;
+
     function setUp() external {
         // num = 2;
 
         // fundMe = new FundMe(0x694AA1769357215DE4FAC081bf1f309aDC325306);
         DeployFundMe deployFundMe = new DeployFundMe();
         fundMe = deployFundMe.run();
+        // Sets the balance of an address who to newBalance. https://book.getfoundry.sh/cheatcodes/deal
+        vm.deal(USER, STARTING_BALANCE);
     }
 
     function testMinDollarsIsFive() public{
@@ -45,9 +52,14 @@ contract FundMeTest is Test{
     }
 
     function testFoundUpdatesFundedDataStructure() public{
-        fundMe.fund{value: 10e18}();
-        uint256 amountFunded = fundMe.getAddressToAmountFunded(address(this));
-        assertEq(amountFunded, 10e18);
+        // Sets msg.sender to the specified address for the next call. https://book.getfoundry.sh/cheatcodes/prank
+        // Next TX will be sent by USER
+        vm.prank(USER);
+        fundMe.fund{value: SEND_VALUE}();
+        uint256 amountFunded = fundMe.getAddressToAmountFunded(USER);
+        assertEq(amountFunded, SEND_VALUE);
     }
+
+    
     
 }
