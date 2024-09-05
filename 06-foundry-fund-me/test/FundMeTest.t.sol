@@ -60,6 +60,28 @@ contract FundMeTest is Test{
         assertEq(amountFunded, SEND_VALUE);
     }
 
-    
+    // [01:17:00] - https://youtu.be/sas02qSFZ74?t=4671
+    function testAddsFunderToArrayOfFunders() public {
+        vm.prank(USER);
+        fundMe.fund{value: SEND_VALUE}();
+        address funder = fundMe.getFunder(0);
+        assertEq(funder, USER);
+    }
+
+
+    modifier funded(){
+        vm.prank(USER);
+        fundMe.fund{value: SEND_VALUE}();
+        _;
+    }
+
+    function testOnlyOwnerCanWithdraw() public funded{
+        // vm.prank(USER);
+        // fundMe.fund{value: SEND_VALUE}();
+
+        vm.prank(USER);
+        vm.expectRevert();
+        fundMe.withdraw();
+    }
     
 }
