@@ -1,5 +1,15 @@
 ## Foundry
 
+### Testing
+ 1. **Unit**: Testing a specific part of our code
+ 2. **Integration**: Testng how our code works with other parts of our code
+ 3. **Forked**: Testing our code on a simulated real environment
+ 4. **Staging**: Testing our code in a real environment that is not prod
+
+___
+___
+___
+ 
 **Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
 
 Foundry consists of:

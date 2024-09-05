@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.19;
 
+import {AggregatorV3Interface} from "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
 import {PriceConverter} from "./PriceConverter.sol";
 
 error NotOwner();
@@ -15,7 +16,7 @@ contract FundMe {
      * Transaction cost: Gas used before without using constant 853,039 -> optimized gas used 790,344 using constant
      * Execution cost: Gas used before without using constant 2407 -> optimized gas used 307 using constant for viewing MIN_USD variable 
      */
-    uint256 public constant MIN_USD = 50 * 1e18;
+    uint256 public constant MIN_USD = 5 * 1e18; // 5e18;
 
     address[] public funders;
     mapping(address funder => uint256 amountFunded)
@@ -43,6 +44,7 @@ contract FundMe {
         funders.push(msg.sender);
         addressToAmountFunded[msg.sender] += msg.value;
     }
+    
 
     function withdraw() public onlyOwner {
 
@@ -84,6 +86,15 @@ contract FundMe {
       * transaction that does not represent a payable function call and throws an exception.
       * https://docs.soliditylang.org/en/latest/contracts.html#special-functions
       */
+
+    function getVersion() public view returns (uint256) {
+        AggregatorV3Interface priceFeed = AggregatorV3Interface(
+            0x694AA1769357215DE4FAC081bf1f309aDC325306
+        );
+        return priceFeed.version();
+    }
+
+      
 
 }
 
