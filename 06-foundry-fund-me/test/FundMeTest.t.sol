@@ -34,9 +34,9 @@ contract FundMeTest is Test{
     }
 
     function testOwnerIsMsgSender() public{
-        console.log(fundMe.i_owner());
+        console.log(fundMe.getOwner());
         console.log(msg.sender);
-        assertEq(fundMe.i_owner(), msg.sender);
+        assertEq(fundMe.getOwner(), msg.sender);
     }
 
     function testPriceFeedVersion() public{
@@ -82,6 +82,23 @@ contract FundMeTest is Test{
         vm.prank(USER);
         vm.expectRevert();
         fundMe.withdraw();
+    }
+
+    function testWithdrawWithASingleFunder() public funded{
+        // Arrange
+        uint256 startingOwnerBalance = fundMe.getOwner().balance;
+        uint256 startingFundMeBalance = address(fundMe).balance;
+
+        // Act
+        vm.prank(fundMe.getOwner());
+        fundMe.withdraw();
+
+        // Assert
+        uint256 endingOwnerBalance = fundMe.getOwner().balance;
+        uint256 endingFundMeBalance = address(fundMe).balance;
+        assertEq(endingFundMeBalance, 0);
+        assertEq(startingFundMeBalance + startingOwnerBalance, endingOwnerBalance);
+
     }
     
 }
