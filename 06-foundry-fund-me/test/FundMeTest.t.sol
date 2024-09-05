@@ -101,10 +101,29 @@ contract FundMeTest is Test{
 
     }
 
-    // Sets up a prank from an address that has some ether. https://book.getfoundry.sh/reference/forge-std/hoax
+    
     // Test with multiple funders - [01:26:14] https://youtu.be/sas02qSFZ74?t=5173
     function testWithdrawFromMultipleFunders() public funded{
-        
+        // Arrange
+        uint160 numberOfFunders = 10;
+        uint160 startingFunderIndex = 1;
+        for (uint160 i = startingFunderIndex; i < numberOfFunders; i++) {
+            // Sets up a prank from an address that has some ether. https://book.getfoundry.sh/reference/forge-std/hoax
+            hoax(address(i), SEND_VALUE);
+            fundMe.fund{value: SEND_VALUE}();
+        }
+
+        uint256 startingOwnerBalance = fundMe.getOwner().balance;
+        uint256 startingFundMeBalance = address(fundMe).balance;
+
+        // Act
+        vm.startPrank(fundMe.getOwner());
+        fundMe.withdraw();
+        vm.stopPrank();
+
+        // Assert
+        assert(startingFundMeBalance == 0);
+        // assert(startingOwnerBalance + startingFundMeBalance == fundMe.getOwner().balance);
     }
     
 }
