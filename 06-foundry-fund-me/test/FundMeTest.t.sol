@@ -100,5 +100,11 @@ contract FundMeTest is Test{
         assertEq(startingFundMeBalance + startingOwnerBalance, endingOwnerBalance);
 
     }
+
+    // Sets up a prank from an address that has some ether. https://book.getfoundry.sh/reference/forge-std/hoax
+    // Test with multiple funders - [01:26:14] https://youtu.be/sas02qSFZ74?t=5173
+    function testWithdrawFromMultipleFunders() public funded{
+        
+    }
     
 }
