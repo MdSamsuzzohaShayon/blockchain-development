@@ -8,6 +8,7 @@
 
 ### Deployment
  - Modular deployment / Modular testing [34:18](https://youtu.be/sas02qSFZ74?t=2058), we can change any kind of chain easily 
+ - Mocking contract [42:06](https://youtu.be/sas02qSFZ74?t=2526) for testing so we can run test without RPC URL locally
 
 ___
 ___
