@@ -1,1 +1,10 @@
-/venv
+/05_foundry-simple-storage/.env
+/05_foundry-simple-storage/broadcast
+/05_foundry-simple-storage/cache
+/05_foundry-simple-storage/out
+
+/06_foundry-fund-me/.env
+/06_foundry-fund-me/broadcast
+/06_foundry-fund-me/cache
+/06_foundry-fund-me/out
+/06_foundry-fund-me/lib/chainlink-brownie-contracts
