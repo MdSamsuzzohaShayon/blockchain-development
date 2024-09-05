@@ -18,9 +18,8 @@ contract FundMe {
      */
     uint256 public constant MIN_USD = 5 * 1e18; // 5e18;
 
-    address[] public funders;
-    mapping(address funder => uint256 amountFunded)
-        public addressToAmountFunded;
+    address[] private s_funders;
+    mapping(address funder => uint256 amountFunded) private s_addressToAmountFunded;
 
     /**
      * Variables declared as immutable are a bit less restricted than those declared 
@@ -44,24 +43,56 @@ contract FundMe {
             "Didn't send enough ETH!"
         ); 
 
-        funders.push(msg.sender);
-        addressToAmountFunded[msg.sender] += msg.value;
+        s_funders.push(msg.sender);
+        s_addressToAmountFunded[msg.sender] += msg.value;
     }
     
 
     function withdraw() public onlyOwner {
 
-        for (uint256 i = 0; i < funders.length; i++) {
-            address funder = funders[i];
-            addressToAmountFunded[funder] = 0;
+        for (uint256 i = 0; i < s_funders.length; i++) {
+            address funder = s_funders[i];
+            s_addressToAmountFunded[funder] = 0;
         }
 
-        funders = new address[](0);
+        s_funders = new address[](0);
 
         (bool callSuccess, ) = payable(msg.sender).call{
             value: address(this).balance
         }("");
         require(callSuccess, "Call Failed");
+    }
+
+
+    /**
+     * https://solidity-by-example.org/fallback/
+     *
+     * Ether is sent to contract
+     *          is msg.data empty?
+     *                  /       \
+     8                 Yes      No
+     *                 /          \
+     *  `          receive()    fallback()
+     *               /  \
+     *             Yes  No
+     *             /     \
+     *       receive()   fallback()
+     *
+     */
+    fallback() external payable{
+        fund();
+    }
+
+    receive() external payable{
+        fund();
+    }
+
+    function getAddressToAmountFunded(address fundingAddress) external view returns(uint256){
+        return s_addressToAmountFunded[fundingAddress];
+    }
+
+    function getFunder(uint256 index) external view returns(address){
+        return s_funders[index];
     }
 
 

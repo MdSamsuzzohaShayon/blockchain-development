@@ -37,5 +37,17 @@ contract FundMeTest is Test{
         assertEq(version, 4);
     }
 
+    // https://book.getfoundry.sh/cheatcodes/expect-revert
+    function testFundFailsWithoutEnoughETH() public {
+        vm.expectRevert();
+        // uint256 cat = 1; // this will pass
+        fundMe.fund();
+    }
+
+    function testFoundUpdatesFundedDataStructure() public{
+        fundMe.fund{value: 10e18}();
+        uint256 amountFunded = fundMe.getAddressToAmountFunded(address(this));
+        assertEq(amountFunded, 10e18);
+    }
     
 }
