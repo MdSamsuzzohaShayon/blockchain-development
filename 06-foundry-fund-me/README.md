@@ -9,6 +9,7 @@
 ### Deployment
  - Modular deployment / Modular testing [34:18](https://youtu.be/sas02qSFZ74?t=2058), we can change any kind of chain easily 
  - Mocking contract [42:06](https://youtu.be/sas02qSFZ74?t=2526) for testing so we can run test without RPC URL locally
+ - Magic numbers https://youtu.be/sas02qSFZ74?t=3520
 
 ___
 ___
@@ -22,6 +23,7 @@ Foundry consists of:
 -   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
 -   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
 -   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+
 
 ## Documentation
 
