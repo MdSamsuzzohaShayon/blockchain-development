@@ -15,7 +15,7 @@ import {AggregatorV3Interface} from "@chainlink/contracts/src/v0.8/shared/interf
  */
 
 library PriceConverter {
-    function getPrice() internal view returns (uint256) {
+    function getPrice(AggregatorV3Interface priceFeed) internal view returns (uint256) {
         /**
          * To work with an contract we need Address of that contract and ABI
          * To consume price data, your smart contract should reference AggregatorV3Interface, which defines the external functions implemented by Data Feeds.
@@ -28,9 +28,7 @@ library PriceConverter {
          * Address: 0x694AA1769357215DE4FAC081bf1f309aDC325306
          */
 
-        AggregatorV3Interface priceFeed = AggregatorV3Interface(
-            0x694AA1769357215DE4FAC081bf1f309aDC325306
-        );
+
         (
             ,
             /* uint80 roundID */ int price /*uint startedAt*/ /*uint timeStamp*/ /*uint80 answeredInRound*/,
@@ -42,10 +40,11 @@ library PriceConverter {
     }
 
     function getConversionRate(
-        uint256 ethAmount
+        uint256 ethAmount,
+        AggregatorV3Interface priceFeed
     ) internal view returns (uint256) {
         // 1 ETH = 2000,000000000000000000
-        uint256 ethPrice = getPrice();
+        uint256 ethPrice = getPrice(priceFeed);
         // (2000,000000000000000000 * 1,000000000000000000) / 1e18
         // $2000 = 1 ETH
         uint256 ethAmmountInUSD = (ethPrice * ethAmount) / 1e18; // https://youtu.be/umepbfKp5rI?t=17564

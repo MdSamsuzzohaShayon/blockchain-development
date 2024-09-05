@@ -4,7 +4,7 @@ pragma solidity 0.8.19;
 import {AggregatorV3Interface} from "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
 import {PriceConverter} from "./PriceConverter.sol";
 
-error NotOwner();
+error FundMe__NotOwner();
 
 contract FundMe {
     using PriceConverter for uint256;
@@ -31,13 +31,16 @@ contract FundMe {
      */
     address public immutable i_owner;
 
-    constructor() {
+    AggregatorV3Interface private s_priceFeed;
+
+    constructor(address priceFeed) {
         i_owner = msg.sender;
+        s_priceFeed = AggregatorV3Interface(priceFeed);
     }
 
     function fund() public payable {
         require(
-            msg.value.getConversionRate() > MIN_USD,
+            msg.value.getConversionRate(s_priceFeed) > MIN_USD,
             "Didn't send enough ETH!"
         ); 
 
@@ -68,7 +71,7 @@ contract FundMe {
      */
      modifier onlyOwner(){
         // require(msg.sender == i_owner, "Owner is not sender!");
-        if(msg.sender != i_owner) {revert NotOwner();}
+        if(msg.sender != i_owner) {revert FundMe__NotOwner();}
         _;
      }
 
@@ -88,10 +91,7 @@ contract FundMe {
       */
 
     function getVersion() public view returns (uint256) {
-        AggregatorV3Interface priceFeed = AggregatorV3Interface(
-            0x694AA1769357215DE4FAC081bf1f309aDC325306
-        );
-        return priceFeed.version();
+        return s_priceFeed.version();
     }
 
       

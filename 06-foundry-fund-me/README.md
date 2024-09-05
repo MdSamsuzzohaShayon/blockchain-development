@@ -6,6 +6,9 @@
  3. **Forked**: Testing our code on a simulated real environment
  4. **Staging**: Testing our code in a real environment that is not prod
 
+### Deployment
+ - Modular deployment / Modular testing [34:18](https://youtu.be/sas02qSFZ74?t=2058), we can change any kind of chain easily 
+
 ___
 ___
 ___
