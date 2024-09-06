@@ -17,6 +17,7 @@
  - [Style guide](https://docs.soliditylang.org/en/latest/style-guide.html#) - This guide is intended to provide coding conventions for writing Solidity code.
  - [README.md, Interation tests, Programatic verication (01:56:11)](https://youtu.be/sas02qSFZ74?t=6971)
  - Makefile [02:10:59](https://youtu.be/sas02qSFZ74?t=7859)
+ - HTML, JS Fund Me [02:37:00](https://youtu.be/sas02qSFZ74?t=9429)
 
 ### README Guide / [Make a README Because no one can read your mind](https://www.drupal.org/docs/develop/managing-a-drupalorg-theme-module-or-distribution-project/documenting-your-project/readmemd-template) 
  - __https://www.makeareadme.com/__
@@ -26,7 +27,7 @@
     2. Quickstart
     3. Usage
 
- Till - https://youtu.be/sas02qSFZ74?t=7539
+ Till - https://youtu.be/sas02qSFZ74?t=9429
 
 
 ___
