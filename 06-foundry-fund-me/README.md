@@ -20,6 +20,7 @@
 
 ### README Guide / [Make a README Because no one can read your mind](https://www.drupal.org/docs/develop/managing-a-drupalorg-theme-module-or-distribution-project/documenting-your-project/readmemd-template) 
  - __https://www.makeareadme.com/__
+ - About
  - Getting Started
     1. Requirements
     2. Quickstart
