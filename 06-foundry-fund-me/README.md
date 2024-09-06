@@ -11,8 +11,13 @@
  - Mocking contract [42:06](https://youtu.be/sas02qSFZ74?t=2526) for testing so we can run test without RPC URL locally
  - Magic numbers https://youtu.be/sas02qSFZ74?t=3520
  - Add more tests - https://youtu.be/sas02qSFZ74?t=3970
+ - Debuging with [Chisel (01:32:26)](https://youtu.be/sas02qSFZ74?t=5546) is an advanced Solidity REPL shipped with Foundry. - https://book.getfoundry.sh/chisel/
+ - Making [gas efficient (01:33:56)](https://youtu.be/sas02qSFZ74?t=5636)
+ - An Ethereum Virtual Machine Opcodes Interactive [Reference](https://www.evm.codes/)
+ - [Style guide](https://docs.soliditylang.org/en/latest/style-guide.html#) - This guide is intended to provide coding conventions for writing Solidity code.
 
  Till - https://youtu.be/sas02qSFZ74?t=5546
+
 
 ___
 ___

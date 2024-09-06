@@ -62,6 +62,22 @@ contract FundMe {
         require(callSuccess, "Call Failed");
     }
 
+    function cheapWithdraw() public onlyOwner {
+        // s_variable means storage variable 
+        uint256 fundersLength = s_funders.length;
+        for (uint256 i = 0; i < fundersLength; i++) {
+            address funder = s_funders[i];
+            s_addressToAmountFunded[funder] = 0;
+        }
+
+        s_funders = new address[](0);
+
+        (bool callSuccess, ) = payable(msg.sender).call{
+            value: address(this).balance
+        }("");
+        require(callSuccess, "Call Failed");
+    }
+
     /**
      * https://solidity-by-example.org/fallback/
      *
