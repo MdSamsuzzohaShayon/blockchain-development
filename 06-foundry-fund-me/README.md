@@ -15,8 +15,16 @@
  - Making [gas efficient (01:33:56)](https://youtu.be/sas02qSFZ74?t=5636)
  - An Ethereum Virtual Machine Opcodes Interactive [Reference](https://www.evm.codes/)
  - [Style guide](https://docs.soliditylang.org/en/latest/style-guide.html#) - This guide is intended to provide coding conventions for writing Solidity code.
+ - [README.md, Interation tests, Programatic verication (01:56:11)](https://youtu.be/sas02qSFZ74?t=6971)
 
- Till - https://youtu.be/sas02qSFZ74?t=5546
+### README Guide / [Make a README Because no one can read your mind](https://www.drupal.org/docs/develop/managing-a-drupalorg-theme-module-or-distribution-project/documenting-your-project/readmemd-template) 
+ - __https://www.makeareadme.com/__
+ - Getting Started
+    1. Requirements
+    2. Quickstart
+    3. Usage
+
+ Till - https://youtu.be/sas02qSFZ74?t=7539
 
 
 ___
