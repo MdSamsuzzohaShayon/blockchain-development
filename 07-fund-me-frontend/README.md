@@ -1,5 +1,6 @@
 # Tutorial
- - [(2:37:02) | Send transaction with MetaMask and JS](https://www.youtube.com/watch?v=sas02qSFZ74&t=9422s)*
+ - [(02:37:02) | Send transaction with MetaMask and JS](https://www.youtube.com/watch?v=sas02qSFZ74&t=9422s)
+ - [(02:52:34) | Function selection, low-level code](https://youtu.be/sas02qSFZ74?t=10354)
 
 # html-fund-me-cu
 
