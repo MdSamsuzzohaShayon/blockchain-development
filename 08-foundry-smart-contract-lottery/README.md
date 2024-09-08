@@ -1,12 +1,19 @@
-# Tutorial
+# Tutorials
+
+## Previous
  - [(03:08:39) | Lottery project setup](https://youtu.be/sas02qSFZ74?t=11319)
- - [(03:25:16) | Logging Events, Viewing Events, Events in brownie](https://youtu.be/sas02qSFZ74?t=12316)
+ - [(03:22:16) | Logging Events, Viewing Events, Events in brownie](https://youtu.be/sas02qSFZ74?t=12316)
+ - [(03:37:38) | Chainlink VRF to generate random number](https://youtu.be/sas02qSFZ74?t=13058)
+ - [(03:47:21) | Using chainlink VRF](https://youtu.be/sas02qSFZ74?t=13641)
+## Current
+ - [(14:53:00) | Populate Chainlink VRF request](https://youtu.be/-1GB6m39-rM?t=53581)
 
 # Provely Random Raffle Contracts
 
 ## About
  - This code is to create a provely random smart contract lottery.
  - [Events](https://docs.soliditylang.org/en/latest/contracts.html#events) allow you to print stuff to this log. (Events and logs are present in special data structure that is not accessable)
+ - [Using Chainlink VRF]()
 
 
 ## What we want it to do?
@@ -18,7 +25,7 @@
     1. Chainlink VRF -> Randomness
     2. Chainlink AUtomation -> Time based trigger
 
- - Till - https://youtu.be/sas02qSFZ74?t=12278
+ - Till - https://youtu.be/-1GB6m39-rM?t=54952
 ___
 ___
 ___
