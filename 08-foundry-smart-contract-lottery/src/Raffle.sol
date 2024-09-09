@@ -161,13 +161,13 @@ contract Raffle is VRFConsumerBaseV2Plus {
         s_raffleState = RaffleState.OPEN;
         s_players = new address payable[](0);
         s_lastTimeStamp = block.timestamp;
+        emit WinnerPicked(s_recentWinner);
 
         (bool success, ) = recentWinner.call{value: address(this).balance}("");
         if(!success){
             revert Raffle__TransferFailed();
         }
 
-        emit WinnerPicked(s_recentWinner);
     }
 
     /**
@@ -183,3 +183,9 @@ contract Raffle is VRFConsumerBaseV2Plus {
  * @notice Solidity contracts follow a specific layout order as per the style guide:
  * https://docs.soliditylang.org/en/latest/style-guide.html#order-of-layout
  */
+
+ /**
+  * Getting Started with Chainlink Automation - https://docs.chain.link/chainlink-automation/overview/getting-started
+  * Register new upkeephttps://automation.chain.link/
+  * Example Automation-compatible contract using custom logic trigger - https://docs.chain.link/chainlink-automation/guides/compatible-contracts
+  */

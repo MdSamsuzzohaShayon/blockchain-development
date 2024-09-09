@@ -8,7 +8,8 @@
 ## Current
  - [(14:53:00) | Populate Chainlink VRF request](https://youtu.be/-1GB6m39-rM?t=53581)
  - [(15:24:29) | Pick random winner](https://youtu.be/-1GB6m39-rM?t=55469)
- - [(15:40:00) | CEI - Check, Effects, Interactions](https://youtu.be/-1GB6m39-rM?t=56402)
+ - [(15:40:00) | CEI - Check, Effects, Interactions, and Chainlink Automation](https://youtu.be/-1GB6m39-rM?t=56402)
+ - [(16:00:10) | Chainlink Automation Implementation](https://youtu.be/-1GB6m39-rM?t=57611)
 
 # Provely Random Raffle Contracts
 
