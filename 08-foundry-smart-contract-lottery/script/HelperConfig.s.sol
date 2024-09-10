@@ -9,7 +9,7 @@ abstract contract CodeConstants {
     // VRF Mock Values
     uint96 public MOCK_BASE_FEE = 2.25 ether;
     uint96 public MOCK_GAS_PRICE_LINK = 1e9;
-    uint96 public MOCK_WEI_PER_UNIT_LINK = 4e15;
+    int96 public MOCK_WEI_PER_UNIT_LINK = 4e15; // MOCK_WEI_PER_UINT_LINK
 
     uint256 public constant ETH_SEPOLIA_CHAIN_ID = 1115511;
     uint256 public constant LOCAL_CHAIN_ID = 31337;
@@ -76,7 +76,7 @@ contract HelperConfig is CodeConstants, Script {
             MOCK_GAS_PRICE_LINK,
             MOCK_WEI_PER_UNIT_LINK
         );
-        vm.startBroadcast();
+        vm.stopBroadcast();
 
         localNetworkConfig = NetworkConfig({
             entranceFee: 0.01 ether, // 1e16
