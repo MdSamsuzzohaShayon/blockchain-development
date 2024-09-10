@@ -11,6 +11,7 @@
  - [(15:40:00) | CEI - Check, Effects, Interactions, and Chainlink Automation](https://youtu.be/-1GB6m39-rM?t=56402)
  - [(16:00:10) | Chainlink Automation Implementation](https://youtu.be/-1GB6m39-rM?t=57611)
  - [(16:17:12) | Deploying mock and such in sepolia or anvil network](https://youtu.be/-1GB6m39-rM?t=58632)
+ - [(16:41:35) | Testing Raffle.sol setup](https://youtu.be/-1GB6m39-rM?t=60095)
 
 # Provely Random Raffle Contracts
 
