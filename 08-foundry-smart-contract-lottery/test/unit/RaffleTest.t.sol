@@ -43,7 +43,7 @@ contract RaffleTest is Test {
         assert(raffle.getRaffleState() == Raffle.RaffleState.OPEN);
     }
 
-    function testRaffleRevertWhenDoNotPayEnough() public{
+    function testRaffleRevertWhenDoNotPayEnough() public {
         // Arrange
         vm.prank(PLAYER);
         // Act / Assert
@@ -51,7 +51,7 @@ contract RaffleTest is Test {
         raffle.enterRaffle();
     }
 
-    function testRaffleRecordsPlayersWhenTheyEnter() public{
+    function testRaffleRecordsPlayersWhenTheyEnter() public {
         // Arrange
         vm.prank(PLAYER);
         // Act
@@ -63,13 +63,27 @@ contract RaffleTest is Test {
 
     // https://youtu.be/-1GB6m39-rM?t=61032
     // https://book.getfoundry.sh/cheatcodes/expect-emit
-    function testEnteringRaffleEmitsEvent() public{
+    function testEnteringRaffleEmitsEvent() public {
         // Arrange
         vm.prank(PLAYER);
         // Act
         vm.expectEmit(true, false, false, false, address(raffle));
         emit EnteredRaffle(PLAYER);
         // Assert
+        raffle.enterRaffle{value: entranceFee}();
+    }
+
+    function testDoNotAllowPlayersToEnterWhileRaffleIsCalculating() public {
+        // Arrange
+        vm.prank(PLAYER);
+        raffle.enterRaffle{value: entranceFee}();
+        vm.warp(block.timestamp + interval + 1);
+        vm.roll(block.number + 1);
+        raffle.performUpkeep("");
+
+        // Act // Assert
+        vm.expectRevert(Raffle.Raffle__NotOpen.selector);
+        vm.prank(PLAYER);
         raffle.enterRaffle{value: entranceFee}();
     }
 }

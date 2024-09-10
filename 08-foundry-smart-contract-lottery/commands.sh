@@ -6,3 +6,5 @@ forge fmt
 forge test
 forge test --mt testRaffleRevertWhenDoNotPayEnough
 forge coverage
+cast sig "createSubscription()"
+forge fmt

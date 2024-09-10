@@ -21,11 +21,10 @@ contract Raffle is VRFConsumerBaseV2Plus {
     error Raffle__UpkeepNotNeeded(uint256 balance, uint256 playersLength, uint256 raffleState);
 
     // Type Decorations - https://solidity-by-example.org/enum/
-    enum RaffleState{
+    enum RaffleState {
         OPEN,
         CALCULATING
     }
-
 
     // Constant variables for Chainlink VRF configuration
     uint16 private constant REQUEST_CONFIRMATIONS = 3; // Number of confirmations before fulfilling randomness request
@@ -90,7 +89,7 @@ contract Raffle is VRFConsumerBaseV2Plus {
         if (msg.value < i_entranceFee) {
             revert Raffle__NotEnoughEthSent(); // Custom error to save gas
         }
-        if(s_raffleState != RaffleState.OPEN){
+        if (s_raffleState != RaffleState.OPEN) {
             revert Raffle__NotOpen();
         }
         s_players.push(payable(msg.sender)); // Add the player to the raffle participants
@@ -98,26 +97,30 @@ contract Raffle is VRFConsumerBaseV2Plus {
     }
 
     /**
-     * Use these elements to create a compatible contract that will automatically increment a counter after every updateInterval seconds. 
-     * After you register the contract as an upkeep, the Chainlink Automation Network frequently simulates your checkUpkeep offchain to determine 
-     * if the updateInterval time has passed since the last increment (timestamp). When checkUpkeep returns true, the Chainlink Automation Network 
+     * Use these elements to create a compatible contract that will automatically increment a counter after every updateInterval seconds.
+     * After you register the contract as an upkeep, the Chainlink Automation Network frequently simulates your checkUpkeep offchain to determine
+     * if the updateInterval time has passed since the last increment (timestamp). When checkUpkeep returns true, the Chainlink Automation Network
      * calls performUpkeep onchain and increments the counter. This cycle repeats until the upkeep is cancelled or runs out of funding.
      * Reference: https://docs.chain.link/chainlink-automation/guides/compatible-contracts#example-automation-compatible-contract-using-custom-logic-trigger
-     * 
+     *
      * @dev This is the function thaty the chainlink nodes will call to see if the following should be true in order dor upkeepNeeded to be true:
      * 1. The time interval has passed between raffle runs
      * 2. The lottery is open
      * 3. The contract has ETH (has players)
      * 4. Implicitly your subscription has LINK
      */
-     function checkUpkeep(bytes memory /* checkdata */) public view returns(bool upkeepNeeded, bytes memory /* performData */ ){
+    function checkUpkeep(bytes memory /* checkdata */ )
+        public
+        view
+        returns (bool upkeepNeeded, bytes memory /* performData */ )
+    {
         bool timeHasPassed = (block.timestamp - s_lastTimeStamp) >= i_interval;
         bool isOpen = s_raffleState == RaffleState.OPEN;
         bool hasBalance = address(this).balance > 0;
         bool hasPlayers = s_players.length > 0;
         upkeepNeeded = timeHasPassed && isOpen && hasBalance && hasPlayers;
         return (upkeepNeeded, "0x0"); // 0x0, "", hex"" all three returns means null
-     }
+    }
 
     /**
      * @dev External function to trigger the random winner selection process.
@@ -125,9 +128,9 @@ contract Raffle is VRFConsumerBaseV2Plus {
      * Utilizes Chainlink VRF to request a random number.
      * Reference: https://docs.chain.link/chainlink-automation/guides/compatible-contracts#example-automation-compatible-contract-using-custom-logic-trigger
      */
-    function performUpkeep(bytes calldata /* performData */) external {
-        (bool upkeepNeeded, ) = checkUpkeep("");
-        if(!upkeepNeeded){
+    function performUpkeep(bytes calldata /* performData */ ) external {
+        (bool upkeepNeeded,) = checkUpkeep("");
+        if (!upkeepNeeded) {
             revert Raffle__UpkeepNotNeeded(address(this).balance, s_players.length, uint256(s_raffleState));
         }
         s_raffleState = RaffleState.CALCULATING;
@@ -143,19 +146,18 @@ contract Raffle is VRFConsumerBaseV2Plus {
         // Create a VRFV2PlusClient request for randomness
         // Documentation on contract variables:
         // https://docs.chain.link/vrf/v2-5/getting-started#contract-variables
-        VRFV2PlusClient.RandomWordsRequest memory request = VRFV2PlusClient
-            .RandomWordsRequest({
-                keyHash: i_keyHash, // Pass the key hash
-                subId: i_subscriptionId, // Pass the subscription ID
-                requestConfirmations: REQUEST_CONFIRMATIONS, // Number of confirmations to wait
-                callbackGasLimit: i_callbackGasLimit, // Gas limit for the callback
-                numWords: NUM_WORDS, // Number of random words to request
-                extraArgs: VRFV2PlusClient._argsToBytes(
-                    VRFV2PlusClient.ExtraArgsV1({
-                        nativePayment: false // Specify payment type (false for LINK payments)
-                    })
+        VRFV2PlusClient.RandomWordsRequest memory request = VRFV2PlusClient.RandomWordsRequest({
+            keyHash: i_keyHash, // Pass the key hash
+            subId: i_subscriptionId, // Pass the subscription ID
+            requestConfirmations: REQUEST_CONFIRMATIONS, // Number of confirmations to wait
+            callbackGasLimit: i_callbackGasLimit, // Gas limit for the callback
+            numWords: NUM_WORDS, // Number of random words to request
+            extraArgs: VRFV2PlusClient._argsToBytes(
+                VRFV2PlusClient.ExtraArgsV1({
+                    nativePayment: false // Specify payment type (false for LINK payments)
+                })
                 )
-            });
+        });
 
         // Request random words from Chainlink VRF via the inherited s_vrfCoordinator
         s_vrfCoordinator.requestRandomWords(request);
@@ -165,30 +167,26 @@ contract Raffle is VRFConsumerBaseV2Plus {
      * @dev Internal function to fulfill randomness requests once the VRF provides random values.
      * This function is called automatically by the Chainlink VRF system.
      *
-     * The Checks-Effects-Interactions pattern ensures that all code paths through a contract complete 
-     * all required checks of the supplied parameters before modifying the contract’s state (Checks); 
+     * The Checks-Effects-Interactions pattern ensures that all code paths through a contract complete
+     * all required checks of the supplied parameters before modifying the contract’s state (Checks);
      * https://docs.soliditylang.org/en/latest/security-considerations.html#reentrancy
-     * 
+     *
      */
-    function fulfillRandomWords(
-        uint256 /*requestId*/,
-        uint256[] calldata randomWords
-    ) internal override {
+    function fulfillRandomWords(uint256, /*requestId*/ uint256[] calldata randomWords) internal override {
         // Implementation logic to use the random number(s) for selecting a raffle winner will go here.
         uint256 winnerIndex = randomWords[0] % s_players.length;
         address payable recentWinner = s_players[winnerIndex];
         s_recentWinner = recentWinner;
-        
+
         s_raffleState = RaffleState.OPEN;
         s_players = new address payable[](0);
         s_lastTimeStamp = block.timestamp;
         emit WinnerPicked(s_recentWinner);
 
-        (bool success, ) = recentWinner.call{value: address(this).balance}("");
-        if(!success){
+        (bool success,) = recentWinner.call{value: address(this).balance}("");
+        if (!success) {
             revert Raffle__TransferFailed();
         }
-
     }
 
     /**
@@ -199,11 +197,11 @@ contract Raffle is VRFConsumerBaseV2Plus {
         return i_entranceFee; // Return the entrance fee to the caller
     }
 
-    function getRaffleState() external view returns(RaffleState){
+    function getRaffleState() external view returns (RaffleState) {
         return s_raffleState;
     }
 
-    function getPlayer(uint256 indexOfPlayer) external view returns(address){
+    function getPlayer(uint256 indexOfPlayer) external view returns (address) {
         return s_players[indexOfPlayer];
     }
 }
@@ -213,8 +211,8 @@ contract Raffle is VRFConsumerBaseV2Plus {
  * https://docs.soliditylang.org/en/latest/style-guide.html#order-of-layout
  */
 
- /**
-  * Getting Started with Chainlink Automation - https://docs.chain.link/chainlink-automation/overview/getting-started
-  * Register new upkeephttps://automation.chain.link/
-  * Example Automation-compatible contract using custom logic trigger - https://docs.chain.link/chainlink-automation/guides/compatible-contracts
-  */
+/**
+ * Getting Started with Chainlink Automation - https://docs.chain.link/chainlink-automation/overview/getting-started
+ * Register new upkeephttps://automation.chain.link/
+ * Example Automation-compatible contract using custom logic trigger - https://docs.chain.link/chainlink-automation/guides/compatible-contracts
+ */
