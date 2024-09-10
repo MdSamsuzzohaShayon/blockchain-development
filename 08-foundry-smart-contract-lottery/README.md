@@ -10,6 +10,7 @@
  - [(15:24:29) | Pick random winner](https://youtu.be/-1GB6m39-rM?t=55469)
  - [(15:40:00) | CEI - Check, Effects, Interactions, and Chainlink Automation](https://youtu.be/-1GB6m39-rM?t=56402)
  - [(16:00:10) | Chainlink Automation Implementation](https://youtu.be/-1GB6m39-rM?t=57611)
+ - [(16:17:12) | Deploying mock and such in sepolia or anvil network](https://youtu.be/-1GB6m39-rM?t=58632)
 
 # Provely Random Raffle Contracts
 
@@ -28,7 +29,15 @@
     1. Chainlink VRF -> Randomness
     2. Chainlink AUtomation -> Time based trigger
 
- - Till - https://youtu.be/-1GB6m39-rM?t=54952
+## Tests
+ 1. Write deploy scripts
+   1. Note, these will not work on skSync (As of recording)
+ 2. Write tests
+   1. Local chain
+   2. Forked testnet
+   3. Forked mainnet
+
+ - Till - https://youtu.be/-1GB6m39-rM?t=59805
 ___
 ___
 ___
