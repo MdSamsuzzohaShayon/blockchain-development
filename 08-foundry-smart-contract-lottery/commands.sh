@@ -8,3 +8,7 @@ forge test --mt testRaffleRevertWhenDoNotPayEnough
 forge coverage
 cast sig "createSubscription()"
 forge fmt
+
+source .env
+cast wallet import myaccount --interactive
+forge script script/Interactions.s.sol:FundSubscription --rpc-url $SEPOLIA_RPC_URL --account myaccount --broadcast

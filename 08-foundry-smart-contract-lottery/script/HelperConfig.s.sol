@@ -4,6 +4,7 @@ pragma solidity ^0.8.19;
 import {Script} from "forge-std/Script.sol";
 // lib/chainlink-brownie-contracts/contracts/src/v0.8/vrf/mocks/VRFCoordinatorV2_5Mock.sol
 import {VRFCoordinatorV2_5Mock} from "@chainlink/contracts/src/v0.8/vrf/mocks/VRFCoordinatorV2_5Mock.sol";
+import {LinkToken} from "test/mocks/LinkToken.sol";
 
 abstract contract CodeConstants {
     // VRF Mock Values
@@ -11,7 +12,7 @@ abstract contract CodeConstants {
     uint96 public MOCK_GAS_PRICE_LINK = 1e9;
     int96 public MOCK_WEI_PER_UNIT_LINK = 4e15; // MOCK_WEI_PER_UINT_LINK
 
-    uint256 public constant ETH_SEPOLIA_CHAIN_ID = 1115511;
+    uint256 public constant ETH_SEPOLIA_CHAIN_ID = 11155111;
     uint256 public constant LOCAL_CHAIN_ID = 31337;
 }
 
@@ -25,6 +26,7 @@ contract HelperConfig is CodeConstants, Script {
         bytes32 gasLane;
         uint32 callbackGasLimit;
         uint256 subscriptionId;
+        address link;
     }
 
     NetworkConfig public localNetworkConfig;
@@ -52,7 +54,8 @@ contract HelperConfig is CodeConstants, Script {
             vrfCoordinator: 0x9DdfaCa8183c41ad55329BdeeD9F6A8d53168B1B, // https://docs.chain.link/vrf/v2-5/supported-networks#sepolia-testnet
             gasLane: 0x787d74caea10b2b357790d5b5247c2f63d1d91572a9846f780606e4d953677ae, // 100 gwei Key Hash -> https://docs.chain.link/vrf/v2-5/supported-networks#sepolia-testnet
             callbackGasLimit: 500000, // 500000 gas
-            subscriptionId: 0 // Script will create automitically subscription ID for us
+            subscriptionId: 22306313612449588283480022287687747743722089014746490803157979491593498088321, // Script will create automitically subscription ID for us -> https://vrf.chain.link/#/side-drawer/subscription/22306313612449588283480022287687747743722089014746490803157979491593498088321
+            link: 0x779877A7B0D9E8603169DdbD7836e478b4624789 // https://docs.chain.link/resources/link-token-contracts#sepolia-testnet
         });
     }
 
@@ -70,6 +73,7 @@ contract HelperConfig is CodeConstants, Script {
         vm.startBroadcast();
         VRFCoordinatorV2_5Mock vrfCoordinatorMock =
             new VRFCoordinatorV2_5Mock(MOCK_BASE_FEE, MOCK_GAS_PRICE_LINK, MOCK_WEI_PER_UNIT_LINK);
+        LinkToken linkToken = new LinkToken();
         vm.stopBroadcast();
 
         localNetworkConfig = NetworkConfig({
@@ -78,7 +82,8 @@ contract HelperConfig is CodeConstants, Script {
             vrfCoordinator: address(vrfCoordinatorMock),
             gasLane: 0x787d74caea10b2b357790d5b5247c2f63d1d91572a9846f780606e4d953677ae, // 100 gwei Key Hash -> https://docs.chain.link/vrf/v2-5/supported-networks#sepolia-testnet
             callbackGasLimit: 500000, // 500000 gas
-            subscriptionId: 0 // Script will create automitically subscription ID for us
+            subscriptionId: 0, // Script will create automitically subscription ID for us
+            link: address(linkToken)
         });
 
         return localNetworkConfig;
