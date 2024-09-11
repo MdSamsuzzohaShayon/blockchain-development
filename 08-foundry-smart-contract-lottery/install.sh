@@ -6,3 +6,6 @@ forge install smartcontractkit/chainlink-brownie-contracts@0.6.1 --no-commit
 
 # https://github.com/transmissions11/solmate
 forge install transmissions11/solmate --no-commit
+
+# https://github.com/Cyfrin/foundry-devops?tab=readme-ov-file#installation
+forge install Cyfrin/foundry-devops --no-commit
