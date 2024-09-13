@@ -77,7 +77,9 @@ contract RaffleTest is Test {
         // Arrange
         vm.prank(PLAYER);
         raffle.enterRaffle{value: entranceFee}();
+        // Sets block.timestamp
         vm.warp(block.timestamp + interval + 1);
+        // Sets block.number
         vm.roll(block.number + 1);
         raffle.performUpkeep("");
 
@@ -86,4 +88,72 @@ contract RaffleTest is Test {
         vm.prank(PLAYER);
         raffle.enterRaffle{value: entranceFee}();
     }
+
+    function testCheckUpkeepReturnsFalseIfItHasNoBalance() public{
+        // Arrange
+        // Sets block.timestamp
+        vm.warp(block.timestamp + interval + 1);
+        // Sets block.number
+        vm.roll(block.number + 1);
+        
+        // Act
+        (bool upkeepNeeded, ) = raffle.checkUpkeep("");
+
+        // Assert
+        assert(!upkeepNeeded);
+    }
+
+    function testCheckUpkeepReturnsFalseIfRaffleIsNotOpen() public{
+        // Arrange
+        vm.prank(PLAYER);
+        raffle.enterRaffle{value: entranceFee}();
+        // Sets block.timestamp
+        vm.warp(block.timestamp + interval + 1);
+        // Sets block.number
+        vm.roll(block.number + 1);
+        raffle.performUpkeep("");
+
+        // Act
+        (bool upkeepNeeded, ) = raffle.checkUpkeep("");
+
+
+        // Assert
+        assert(!upkeepNeeded);
+    }
+
+    // Challenge 
+    // testCheckUpkeepReturnsFalseIfEnoughTimeHasPassed
+    // testCheckUpkeepReturnsTrueWhenParametersAreGood
+
+    function testPerformUpkeepCanOnlyRunIfCheckUpkeepIsTrue() public{
+        // Arrange
+        // Sets msg.sender to the specified address for the next call. “The next call” includes static calls as well, but not calls to the cheat code address.
+        vm.prank(PLAYER);
+        raffle.enterRaffle{value: entranceFee}();
+        // Sets block.timestamp
+        vm.warp(block.timestamp + interval + 1);
+        // Sets block.number
+        vm.roll(block.number + 1);
+
+        // Act / Assert
+        raffle.performUpkeep("");
+
+    }
+
+    function testPerformUpkeepRevertsIfCheckUpkeepIsFalse() public{
+        // Arrange
+        uint256 currentBalance = 0;
+        uint256 numPlayers = 0;
+        Raffle.RaffleState rState = raffle.getRaffleState();
+
+        vm.prank(PLAYER);
+        raffle.enterRaffle{value: entranceFee}();
+        currentBalance = currentBalance + entranceFee;
+        numPlayers = 1;
+
+        // Act / Assert
+        vm.expectRevert(abi.encodeWithSelector(Raffle.Raffle__UpkeepNotNeeded.selector, currentBalance, numPlayers, rState));
+        raffle.performUpkeep("");
+    }
+
 }

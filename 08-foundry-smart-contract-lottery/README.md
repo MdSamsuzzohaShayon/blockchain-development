@@ -13,7 +13,8 @@
  - [(16:17:12) | Deploying mock and such in sepolia or anvil network](https://youtu.be/-1GB6m39-rM?t=58632)
  - [(16:41:35) | Testing Raffle.sol setup](https://youtu.be/-1GB6m39-rM?t=60095)
  - [(17:07:00) | Create VRF subscription (programitially and using User interface))](https://youtu.be/-1GB6m39-rM?t=61621)
- - [(17:29:21) | Fund Subscription](https://youtu.be/-1GB6m39-rM?t=62961)
+ - [(17:29:21) | Fund Subscription and pass the test properly](https://youtu.be/-1GB6m39-rM?t=62961)
+ - [(17:57:40) | More tests, Perform upkeep tests](https://youtu.be/-1GB6m39-rM?t=64660)
 
 # Provely Random Raffle Contracts
 
@@ -40,7 +41,7 @@
    2. Forked testnet
    3. Forked mainnet
 
- - Till - https://youtu.be/-1GB6m39-rM?t=62960
+ - Till - https://youtu.be/-1GB6m39-rM?t=65555
 ___
 ___
 ___
