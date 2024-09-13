@@ -1,6 +1,0 @@
-I have a JavaScript code that interacts with MetaMask for a decentralized application. I need you to document the code using JSDoc comments, 
-explaining the purpose of each function and why specific methods or processes are being used. Here is the code:
-
-```
-
-```
