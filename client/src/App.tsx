@@ -1,11 +1,15 @@
 import { useEffect, useState } from 'react';
 import { ethers } from 'ethers';
+import { AppBar, Toolbar, Typography, Container, Box, Button } from '@mui/material';
+import FileUpload from './components/FileUpload';
+import Display from './components/Display';
 import './App.css';
 import Upload from "./artifacts/contracts/Upload.sol/Upload.json";
 
 import { MetaMaskInpageProvider } from '@metamask/providers';
 import { Contract } from 'ethers';
 import { JsonRpcSigner } from 'ethers';
+import Modal from './components/Modal';
 
 declare global {
   interface Window {
@@ -21,6 +25,19 @@ function App() {
   const [contract, setContract] = useState<Contract | null>(null);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [provider, setProvider] = useState<null | JsonRpcSigner>(null);
+
+  const handleOpen = () => {
+    setModalOpen(true);
+  };
+
+  const handleClose = () => {
+    setModalOpen(false);
+  };
+
+  const handleConfirm = () => {
+    console.log('Confirmed action');
+    handleClose();
+  };
 
 
   const wallet = async () => {
@@ -65,12 +82,59 @@ function App() {
     // }
   }, [])
 
-
   return (
-    <div className='App'>
-      App
+    <div className="App">
+      {/* AppBar for header */}
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            SDrive
+          </Typography>
+          <Button color="inherit">{account ? `Account: ${account}` : 'Not Connected'}</Button>
+        </Toolbar>
+      </AppBar>
+
+      {/* Main content */}
+      <Container sx={{ marginTop: 4 }}>
+        <Box sx={{ textAlign: 'center', marginBottom: 4 }}>
+          <Typography variant="h4" gutterBottom>
+            Decentralized File Upload System
+          </Typography>
+          <Typography variant="subtitle1">
+            Upload and manage files securely on the blockchain.
+          </Typography>
+        </Box>
+
+        {/* File upload and Display components */}
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 4,
+            alignItems: 'center',
+          }}
+        >
+          <FileUpload account={account} contract={contract} />
+          <Display account={account} contract={contract} />
+        </Box>
+      </Container>
+
+      <Button variant="contained" color="primary" onClick={handleOpen}>
+        Open Modal
+      </Button>
+
+      {/* Use the custom Modal */}
+      <Modal
+        open={modalOpen}
+        onClose={handleClose}
+        title="Confirm Action"
+        content="Are you sure you want to perform this action?"
+        onConfirm={handleConfirm}
+        confirmText="Confirm"
+        cancelText="Cancel"
+      />
     </div>
-  )
+  );
 }
 
 export default App;
