@@ -9,8 +9,10 @@
 - [React.js](https://reactjs.org/) (Frontend Framework)
 - [Openzappelin](https://docs.openzeppelin.com/)
 
+## Tutorials
+ - [(01:53:19) | Basic Escrow contract with some tests](https://youtu.be/jcgfQEbptdo?t=6799)
 
- - [Till](https://youtu.be/jcgfQEbptdo?t=6580)
+ - [Till](https://youtu.be/jcgfQEbptdo?t=8560)
 
 ## Requirements For Initial Setup
 - Install [NodeJS](https://nodejs.org/en/)

@@ -9,17 +9,24 @@ interface IERC721 {
     ) external;
 }
 
+// Ownership is put in by neutral party and everybody else has to sign
 contract Escrow {
-    address public s_nftAddress;
-    address public s_lender;
-    address public s_inspector;
-    address payable public s_seller;
+    address public nftAddress;
+    address public lender;
+    address public inspector;
+    address payable public seller;
 
 
     constructor(address _nftAddress, address payable _seller, address _inspector, address _lender){
-        s_nftAddress = _nftAddress;
-        s_seller = _seller;
-        s_inspector = _inspector;
-        s_lender = _lender;
+        nftAddress = _nftAddress;
+        seller = _seller;
+        inspector = _inspector;
+        lender = _lender;
+    }
+
+    // Listing properties
+    // Take the NFT out of the user's wallet and move it into escrow
+    function list(uint256 _nftID) public{
+        IERC721(nftAddress).transferFrom(/* seller */ msg.sender, /* This conmtract */ address(this), _nftID);
     }
 }
