@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.7.0 <0.9.0;
+pragma solidity ^0.8.19;
 
 error Upload__PermissionDenied();
 
@@ -12,7 +12,7 @@ contract Upload {
 
     mapping(address => string[]) value; // To store the url
     mapping(address => mapping(address => bool)) ownership;
-    mapping(address => Access[]) accessList; // To give ownership
+    mapping(address => Access[]) public accessList; // To give ownership
     mapping(address => mapping(address => bool)) prevData;
 
     function add(address _user, string calldata url) external {
