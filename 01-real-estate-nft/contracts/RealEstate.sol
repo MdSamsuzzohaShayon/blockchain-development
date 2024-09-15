@@ -1,5 +1,5 @@
 //SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
 // https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.9.5/contracts/token/ERC721/ERC721.sol
 // node_modules/@openzeppelin/contracts/token/ERC721/ERC721.sol
@@ -29,18 +29,16 @@ contract RealEstate is ERC721URIStorage {
      * It sets the name of the token to "Real Estate" and the symbol to "REAL".
      * @notice The constructor initializes the ERC721 contract with the token name and symbol.
      */
-    constructor() public ERC721("Real Estate", "REAL") {}
+    constructor() ERC721("Real Estate", "REAL") {}
 
     /**
      * @dev Function to mint a new NFT representing a real estate property.
-     * @param player The address that will receive ownership of the minted NFT.
      * @param tokenURI The metadata URI for the NFT (e.g., JSON file with details about the property).
      * @return tokenId The ID of the newly minted token.
      * @notice This function allows the caller to mint a new real estate NFT with a specific URI.
      * @dev The `_mint` function from ERC721 is used to create the token, and `_setTokenURI` assigns metadata to it.
      */
     function mint(
-        address player,
         string memory tokenURI
     ) public returns (uint256) {
         // Assign the current token ID and increment for the next token.
@@ -48,7 +46,7 @@ contract RealEstate is ERC721URIStorage {
 
         // Mint the token for the player address with the assigned token ID.
         // `_mint` is inherited from the ERC721 standard.
-        _mint(player, tokenId);
+        _mint(msg.sender, tokenId);
 
         // Set the token's URI (metadata) for the newly minted token.
         // `_setTokenURI` is inherited from ERC721URIStorage, allowing each token to have a unique URI.
