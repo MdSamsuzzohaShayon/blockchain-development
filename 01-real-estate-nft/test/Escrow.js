@@ -29,7 +29,7 @@ describe('Escrow', () => {
 
         // Mint
         // console.log("Real Estate Contract Address: ", contractAddress);
-        let transaction = await realEstate.connect(seller).mint("https://ipfs.io/ipfs/QmQUozrHLAusXDxrvsESJ3PYB3rUeUuBAvVWw6nop2uu7c/1.json");
+        let transaction = await realEstate.connect(seller).mint("https://gateway.pinata.cloud/ipfs/QmcuQKX5tNapHPMUzRM7B7hDKBwX57ExBiLX1xhAdbr5bB");
         await transaction.wait();
 
         // Deploy Escrow
@@ -43,12 +43,12 @@ describe('Escrow', () => {
         escrowAddress = await escrow.getAddress();
 
         // Approve property
-        // transaction = await realEstate.connect(seller).approve(escrowAddress, 1);
-        // await transaction.wait();
+        transaction = await realEstate.connect(seller).approve(escrowAddress, 1);
+        await transaction.wait();
 
         // List property 
-        // transaction = await escrow.connect(seller).list(1);
-        // await transaction.wait();
+        transaction = await escrow.connect(seller).list(1);
+        await transaction.wait();
     });
 
     describe("Deployment", async () => {
@@ -74,6 +74,9 @@ describe('Escrow', () => {
     describe("Listing", async () => {
         let result = null;
         it("Updates ownership", async () => {
+            // const o = await realEstate.ownerOf(1);
+            // console.log({o, escrowAddress});
+            
             expect(await realEstate.ownerOf(1)).to.be.equal(escrowAddress);
         });
     });
