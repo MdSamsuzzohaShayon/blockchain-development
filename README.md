@@ -7,7 +7,8 @@
  - [(00:13:41) | Create Smart contract on Remix](https://youtu.be/M-KRLlHG_zs?t=822)
  - [(00:33:25) | Create hardhat project](https://youtu.be/M-KRLlHG_zs?t=1996)
  - [(00:41:55) | Working with frontend](https://youtu.be/M-KRLlHG_zs?t=2515)
- - [(00:50:26) | ](https://youtu.be/M-KRLlHG_zs?t=3026)
+ - [(00:50:26) | React components design with Material UI](https://youtu.be/M-KRLlHG_zs?t=3026)
+ - [(01:02:58) | Upload file to Pinata IPFS](https://youtu.be/M-KRLlHG_zs?t=3778)
 
 
- -[Till](https://youtu.be/M-KRLlHG_zs?t=1654)
+ -[Till](https://youtu.be/M-KRLlHG_zs?t=5131)

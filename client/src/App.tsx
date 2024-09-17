@@ -40,6 +40,11 @@ function App() {
   };
 
 
+  function handleAccountsChanged() {
+    // Handle new accounts, or lack thereof.
+    window.location.reload();
+  }
+
   const wallet = async () => {
     // https://docs.ethers.org/v6/getting-started/
     let signer = null;
@@ -51,6 +56,10 @@ function App() {
       // protocol that allows Ethers access to make all read-only
       // requests through MetaMask.
       provider = new ethers.BrowserProvider(window.ethereum);
+      const code = await provider.getCode(CONTRACT_ADDRESS);
+      console.log({ code });
+
+      window.ethereum.on("accountsChanged", handleAccountsChanged)
 
       // It also provides an opportunity to request access to write
       // operations, which will be performed by the private key
@@ -77,10 +86,15 @@ function App() {
 
   useEffect(() => {
     wallet();
-    // return () => {
-
-    // }
   }, [])
+
+  // useEffect(() => {
+
+  //   if (window.ethereum) window.ethereum.on("accountsChanged", handleAccountsChanged);  // Or window.ethereum if you don't support EIP-6963.
+  //   return () => {
+  //     if (window.ethereum) window.ethereum.removeListener("accountsChanged", handleAccountsChanged);
+  //   }
+  // }, [])
 
   return (
     <div className="App">
@@ -114,7 +128,7 @@ function App() {
             alignItems: 'center',
           }}
         >
-          <FileUpload account={account} contract={contract} />
+          <FileUpload account={account} contract={contract} provider={provider} />
           <Display account={account} contract={contract} />
         </Box>
       </Container>

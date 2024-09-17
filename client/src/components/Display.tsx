@@ -3,11 +3,25 @@ import { TextField, Button, Typography, Box, Stack } from '@mui/material';
 import { Contract } from 'ethers';
 
 interface IDisplayProps {
-    account: string;
-    contract: Contract | null;
+  account: string;
+  contract: Contract | null;
 }
 
 function Display({ account, contract }: IDisplayProps) {
+  const handleDisplayImages = async (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    if (!contract) return;
+
+    try {
+      
+      const imgList = await contract.display(account);
+      console.log({imgList});
+    } catch (error) {
+      console.log(error);
+      
+    }
+    
+  }
   return (
     <Box
       sx={{
@@ -43,6 +57,7 @@ function Display({ account, contract }: IDisplayProps) {
             type="submit"
             className="align-center"
             fullWidth
+            onClick={handleDisplayImages}
           >
             Get Images
           </Button>
