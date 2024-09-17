@@ -7,8 +7,9 @@ import {VRFCoordinatorV2_5Mock} from "@chainlink/contracts/src/v0.8/vrf/mocks/VR
 import {DeployRaffle} from "script/DeployRaffle.s.sol";
 import {HelperConfig} from "script/HelperConfig.s.sol";
 import {Raffle} from "src/Raffle.sol";
+import {CodeConstants} from "script/HelperConfig.s.sol";
 
-contract RaffleTest is Test {
+contract RaffleTest is CodeConstants, Test {
     Raffle public raffle;
     HelperConfig public helperConfig;
 
@@ -191,10 +192,19 @@ contract RaffleTest is Test {
         assert(uint256(raffleState) == 1);
     }
 
+    // We are mocking and pretending to be VRF Coordinator, It is trying to call an address that does not make sense
+    // On Sepolia test net it will always going to fail, therefore we will skip in Sepolia test net
+    modifier skipFork(){
+        if(block.chainid != LOCAL_CHAIN_ID){
+            return  ;
+        }
+        _;
+    }
+
     // Foundry will provide 256 times with 256 diffrent random ids to fail this test
     function testFulfillRandomWordsCanOnlyBeCalledAfterPerformUpkeep(
         uint256 randomRequestId
-    ) public onlyRaffleEntered {
+    ) public onlyRaffleEntered skipFork {
         vm.expectRevert(VRFCoordinatorV2_5Mock.InvalidRequest.selector);
         VRFCoordinatorV2_5Mock(vrfCoordinator).fulfillRandomWords(
             randomRequestId,
@@ -205,6 +215,7 @@ contract RaffleTest is Test {
     function testFulfillRandomWordsPickAWinnerResetsAndSendsMoney()
         public
         onlyRaffleEntered
+        skipFork
     {
         // Arrange
         uint256 additionalEntrants = 3; // 4 total enter the lottery
@@ -228,7 +239,10 @@ contract RaffleTest is Test {
         raffle.performUpkeep("");
         Vm.Log[] memory entries = vm.getRecordedLogs(); // Gets the emitted events recorded by recordLogs.
         bytes32 requestId = entries[1].topics[1];
-        VRFCoordinatorV2_5Mock(vrfCoordinator).fulfillRandomWords(uint256(requestId), address(raffle));
+        VRFCoordinatorV2_5Mock(vrfCoordinator).fulfillRandomWords(
+            uint256(requestId),
+            address(raffle)
+        );
 
         // Assert
         address recentWinner = raffle.getRecentWinner();

@@ -15,3 +15,4 @@ forge script script/Interactions.s.sol:FundSubscription --rpc-url $SEPOLIA_RPC_U
 forge test --mt testDoNotAllowPlayersToEnterWhileRaffleIsCalculating -vvvv
 forge coverage --report debug > coverage.txt
 forge test --match-test testFulfillRandomWordsCanOnlyBeCalledAfterPerformUpkeep -vvv
+forge test --fork-url $SEPOLIA_RPC_URL
