@@ -37,3 +37,6 @@
 [submodule "08-foundry-smart-contract-lottery/new/lib/foundry-devops"]
 	path = 08-foundry-smart-contract-lottery/new/lib/foundry-devops
 	url = https://github.com/Cyfrin/foundry-devops
+[submodule "08-foundry-smart-contract-lottery/lib/forge-std"]
+	path = 08-foundry-smart-contract-lottery/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std

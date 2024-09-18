@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
+import {console} from "forge-std/console.sol";
 // Import Chainlink VRF v2 Plus contracts for generating random numbers securely.
 // VRFConsumerBaseV2Plus provides the functionality to use Chainlink's randomness service.
 // VRFV2PlusClient includes utilities to make randomness requests.
@@ -92,6 +93,8 @@ contract Raffle is VRFConsumerBaseV2Plus {
      * @dev Emits the `EnteredRaffle` event for tracking entries.
      */
     function enterRaffle() external payable {
+        console.log("HELLO!!!"); // It will cost gas
+        console.log(msg.value);
         if (msg.value < i_entranceFee) {
             revert Raffle__NotEnoughEthSent(); // Revert transaction if not enough ETH is sent.
         }
@@ -160,6 +163,7 @@ contract Raffle is VRFConsumerBaseV2Plus {
      * @param randomWords Array of random numbers provided by Chainlink VRF.
      * @notice Updates the raffle state and handles winner payout.
      * @dev Follows the Checks-Effects-Interactions pattern to ensure secure state changes and interactions.
+     * CEI: Check, Effect, interaction
      */
     function fulfillRandomWords(
         uint256,

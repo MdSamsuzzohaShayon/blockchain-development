@@ -16,7 +16,17 @@
  - [(17:29:21) | Fund Subscription and pass the test properly](https://youtu.be/-1GB6m39-rM?t=62961)
  - [(17:57:40) | More tests, Perform upkeep tests](https://youtu.be/-1GB6m39-rM?t=64660)
  - [(18:43:00) | Running all those tests properly with Sepolia RPC](https://youtu.be/-1GB6m39-rM?t=67381)
+ - [(18:55:22) | Homework for Integration tests / Deploy our contract to Sepolia testnet / Chainlink automation](https://youtu.be/-1GB6m39-rM?t=68122)
+ - [(19:16:29) | Debugging & Recap](https://youtu.be/-1GB6m39-rM?t=69389)
+ - [(19:24:49) | Advanced Foundry](https://youtu.be/-1GB6m39-rM?t=69889)
 
+## Docs
+ - **This is just for testing purpose** However we should never test in Sepolia testnet (Test everything locally first)
+ - [Register upkeep](https://automation.chain.link/sepolia) -> custom logic -> contract address is the address of the contract we have deployed in our sepolia testnet. -> set upkeep name -> starting balance 1 link
+ - Upload verify-contract.json manually to sepolia etherscan if for some reason the contract is not deployed by default
+ - Automate your smart contract with Chainlink’s hyper-reliable Automation network. - https://automation.chain.link/base-sepolia/new
+
+ - [Till](https://youtu.be/-1GB6m39-rM?t=69848)
 # Provely Random Raffle Contracts
 
 ## About
