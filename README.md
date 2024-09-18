@@ -329,6 +329,12 @@ brownie run scripts/deploy.py --network rinkeby
  ```
  - Intract with it (withdraw and funds) (05:42:00)
 
+___
+
+## Latest tutorial
+ - [(19:26:00) | Advanced Foundry](https://youtu.be/-1GB6m39-rM?t=70012)
+ - [ERC](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) - Ethereum Requests for Comments
+ - [EIP](https://eips.ethereum.org/) - Ethereum Improvement Proposal
 
 ### Resources For This Course
   AI Frens
