@@ -1,11 +1,15 @@
 ## Latest tutorial
- - [(19:26:00) | Advanced Foundry](https://youtu.be/-1GB6m39-rM?t=70012)
- - [ERC](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) - Ethereum Requests for Comments
- - [EIP](https://eips.ethereum.org/) - Ethereum Improvement Proposal
+ - [(19:26:00) | Advanced Foundry / Creating tokens](https://youtu.be/-1GB6m39-rM?t=70012)
+ - [(19:42:00) | AI Tests](https://youtu.be/-1GB6m39-rM?t=71029)
+ - [(19:58:56) | NFT](https://youtu.be/-1GB6m39-rM?t=71936)
 
 ## Docs
+ - [ERC](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) - Ethereum Requests for Comments
+ - [EIP](https://eips.ethereum.org/) - Ethereum Improvement Proposal
  - https://docs.openzeppelin.com/contracts/5.x/wizard
 
+
+Till - https://youtu.be/-1GB6m39-rM?t=71284
 
 ____
 
