@@ -1,3 +1,23 @@
+# NFT
+ - [(20:07:52) | Setup NFTs](https://youtu.be/-1GB6m39-rM?t=72472)
+ - [(20:21:59) | Hosting on IPFS](https://youtu.be/-1GB6m39-rM?t=73319)
+
+#### IPFS (InterPlanetary File System)
+IPFS is a decentralized storage system that allows users to store and share files in a distributed manner, much like a peer-to-peer network.
+
+#### How IPFS Works:
+ - Content-based addressing: Instead of locating files by their location (like in HTTP), IPFS uses the file's content to generate a unique hash. This hash is the file's identifier, making it immutable—if the file changes, the hash changes.
+ - Distributed Storage: Files are broken into smaller chunks and distributed across a network of nodes. Anyone can retrieve the file using its unique hash.
+#### Examples:
+ - Storing NFTs: Rather than storing large files (e.g., images, videos) on-chain, NFTs use IPFS to store files. The NFT will contain a token URI pointing to the IPFS hash where the image or metadata is stored.
+    - Example: The NFT metadata might look like: __ipfs://QmHash12345__ , linking to an image hosted on IPFS.
+ - Sharing Files: You can upload a file (e.g., a video) to IPFS. Anyone with the hash can access it, ensuring persistence even if the original uploader goes offline.
+#### Benefits:
+ - Decentralization: Files are not reliant on a single server, reducing the risk of censorship or loss.
+ - Immutability: Once stored, content cannot be altered, ensuring data integrity.
+IPFS is widely used for NFTs and decentralized applications (dApps) for storing assets in a secure, decentralized manner.
+
+____
 ## Foundry
 
 **Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
