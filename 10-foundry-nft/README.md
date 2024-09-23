@@ -1,6 +1,7 @@
 # NFT
  - [(20:07:52) | Setup NFTs](https://youtu.be/-1GB6m39-rM?t=72472)
  - [(20:21:59) | Hosting on IPFS](https://youtu.be/-1GB6m39-rM?t=73319)
+ -
 
 #### IPFS (InterPlanetary File System)
 IPFS is a decentralized storage system that allows users to store and share files in a distributed manner, much like a peer-to-peer network.
@@ -17,6 +18,15 @@ IPFS is a decentralized storage system that allows users to store and share file
  - Immutability: Once stored, content cannot be altered, ensuring data integrity.
 IPFS is widely used for NFTs and decentralized applications (dApps) for storing assets in a secure, decentralized manner.
 
+#### IPFS Installations
+ - https://docs.ipfs.tech/install/ipfs-desktop/#ubuntu
+ ```
+ sudo dnf install ./ipfs-desktop-0.38.0-linux-x86_64.rpm
+ ```
+ - [Install the IPFS Companion Browser Extension](https://docs.ipfs.tech/install/ipfs-companion/#prerequisites)
+####  Accessing IPFS file
+ - Using gateway __https://ipfs.io/ipfs/<CID_OR_HASH>__
+ - Another way is __ipfs://QmeiRXnMbyhYGNaWdisR3pnDd3uykmB7VrjpQcug8ngr5u__
 ____
 ## Foundry
 

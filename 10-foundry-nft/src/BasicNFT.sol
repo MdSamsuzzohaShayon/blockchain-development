@@ -12,15 +12,21 @@ import {ERC721} from "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
 contract BasicNFT is ERC721 {
     uint256 private s_tokenCounter;
+    mapping(uint256 => string) private s_tokenIdToUri;
 
     constructor() ERC721("Dogie", "DOG") {
         s_tokenCounter = 0;
     }
 
-    function mintNft() public {}
+    function mintNft(string memory _tokenUri) public {
+        s_tokenIdToUri[s_tokenCounter] = tokenUri;
+        _safeMint(msg.sender, s_tokenCounter);
+        s_tokenCounter ++;
+    }
 
     // lib/openzeppelin-contracts/contracts/token/ERC721/ERC721.sol
     function tokenURI(uint256 tokenId) public view override returns(string memory){
-        return "ipfs://bafybeif3m7vdqkjs5nysm6qe2sl7l2sp7exog7abkpyzmhttav2oku2uxm/1712";
+        // ipfs://bafybeig37ioir76s7mg5oobetncojcm3c3hxasyd4rvid4jqhy4gkaheg4/?filename=0-PUG.json
+        return s_tokenIdToUri[tokenId];
     }
 }
