@@ -1,7 +1,8 @@
 # NFT
  - [(20:07:52) | Setup NFTs](https://youtu.be/-1GB6m39-rM?t=72472)
  - [(20:21:59) | Hosting on IPFS](https://youtu.be/-1GB6m39-rM?t=73319)
- -
+ - [(20:32:00) | Deploy basic NFT](https://youtu.be/-1GB6m39-rM?t=73920)
+ - [(20:33:23) | Test basic NFT](https://youtu.be/-1GB6m39-rM?t=74003)
 
 #### IPFS (InterPlanetary File System)
 IPFS is a decentralized storage system that allows users to store and share files in a distributed manner, much like a peer-to-peer network.
