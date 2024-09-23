@@ -356,6 +356,74 @@ ___
  - [Blockchain Programming with Python: Free Bonus Lessons](https://www.youtube.com/watch?v=nhA9I_RYxgQ)
 curl -d "address=MY_CONTRACT_ADDRESS" "https://api-ropsten.etherscan.io/api?module=contract&action=verifyproxycontract&apikey=H1AD2KZ9Q7IUZ67YF5CUTFCCT3P2DWIQ89"
 
+___
+
+### NFT - Non-Fungible Token / OT
+ - [(19:58:52) | All about NFT](https://youtu.be/-1GB6m39-rM?t=71932)
+
+#### What is an NFT?
+
+An NFT (Non-Fungible Token) is a unique digital asset that represents ownership or proof of authenticity of a specific item, recorded on the blockchain. NFTs are non-interchangeable, meaning no two NFTs are exactly alike, which makes them non-fungible.
+
+NFTs are typically built on the Ethereum blockchain using the ERC-721 standard, though other blockchains also support NFTs. They can represent a variety of assets like digital art, music, videos, in-game assets, and even real-world items such as real estate.
+
+#### How NFTs Differ from ERC-20 Tokens
+NFTs are commonly built using the ERC-721 token standard, which differs significantly from the ERC-20 token standard:
+
+  - ERC-20 Tokens: These are fungible tokens—every ERC-20 token is identical to another. Examples include Chainlink (LINK), Aave (AAVE), and Maker (MKR). One LINK token has the same value and properties as another LINK token. This makes them interchangeable, like how one dollar can be exchanged for another dollar.
+
+  - ERC-721 Tokens (NFTs): These are non-fungible tokens—each token is unique and cannot be exchanged on a one-to-one basis with another. Think of an NFT as a digital certificate of authenticity or ownership for a unique asset like a digital artwork or a collectible trading card. For example, a digital painting or a trading card can be tokenized into an NFT, and its uniqueness makes it valuable.
+
+#### Real-Life Examples of NFTs
+  1. Art and Collectibles: Digital artworks can be tokenized as NFTs. For example, digital artist Beeple sold an NFT artwork titled "Everydays: The First 5000 Days" for $69 million at Christie's auction house.
+
+  2. Gaming: In games like Axie Infinity, players can buy, sell, and breed creatures called Axies, which are represented as NFTs. Each Axie has unique attributes and stats, making them valuable and tradeable within the game.
+
+  3. Virtual Real Estate: In virtual worlds like Decentraland and The Sandbox, users can buy virtual plots of land as NFTs, build on them, and sell them for real money.
+
+#### Why NFTs Are Important
+NFTs introduce the concept of true digital ownership. In the digital world, before NFTs, it was challenging to prove who owned a digital file like an image or a video. NFTs use blockchain technology to ensure that ownership and authenticity can be verified in a decentralized manner. This has significant implications for artists, content creators, gamers, and collectors.
+
+##### Key reasons why NFTs matter:
+
+  - Ownership and Authenticity: Blockchain technology ensures that the ownership of NFTs is public and verifiable. Once created (minted), an NFT can be traced to its original owner, providing proof of authenticity.
+  - Interoperability: NFTs can be used across different platforms. For example, you could purchase an NFT on one platform (like OpenSea) and showcase it in a virtual gallery in Decentraland.
+  - Monetization for Creators: NFTs empower creators by allowing them to monetize their digital content without intermediaries like galleries or streaming services. Artists can earn royalties from secondary sales through smart contracts.
+
+#### ERC-721 vs. ERC-1155 (Semi-Fungible Tokens)
+ - ERC-721: This standard is used to create NFTs, where each token is entirely unique and cannot be swapped for another.
+ - ERC-1155: This is a semi-fungible token standard. It allows for both fungible and non-fungible assets in the same contract. For example, you could have 100 identical tokens for a special in-game item but also have unique items like a rare sword. ERC-1155 is more efficient for creating multiple types of assets within a single contract.
+#### NFTs and Metadata: On-Chain vs. Off-Chain
+Metadata refers to the information associated with an NFT that defines its attributes (such as name, description, and images). Metadata is crucial because it determines what the NFT represents visually and in function.
+
+  - On-Chain Metadata: This refers to metadata stored directly on the blockchain. While secure and decentralized, it is expensive and impractical for large assets (like high-resolution images or videos), as storing such data on-chain can be costly in terms of gas fees (transaction costs).
+
+  - Off-Chain Metadata: Many NFTs use off-chain storage for metadata due to cost efficiency. The most common solution is to store the data on IPFS (InterPlanetary File System), a decentralized protocol that allows files to be stored and retrieved. The NFT itself will contain a Token URI (Uniform Resource Identifier) that points to the location of the metadata (image, video, or file) on IPFS or another server.
+
+#### Example:
+
+  - Token URI: The URI is a reference that points to metadata stored off-chain. For instance, if you mint an NFT artwork, the Token URI might reference a JSON file hosted on IPFS that contains information like the title of the artwork, artist, and the link to the image file.
+  - You might upload an image to IPFS, generate a URI, and then link this URI to your NFT's metadata.
+
+
+#### Advantages of NFTs
+  1. Ownership: NFTs prove ownership and authenticity in a transparent and immutable manner.
+  2. Royalties: Through smart contracts, creators can earn royalties every time their NFT is resold.
+  3. Programmable Assets: NFTs can have additional functionality, such as being used in games, representing in-game assets, or being upgraded.
+  4. Global Reach: NFT marketplaces are accessible globally, allowing anyone to buy or sell their digital assets.
+  5. Interoperability: NFTs can work across different decentralized applications and platforms.
+
+#### Disadvantages of NFTs
+  1. Environmental Concerns: Ethereum, the most common blockchain for NFTs, uses a lot of energy due to its proof-of-work mechanism. Minting and trading NFTs can have a high carbon footprint.
+  2. High Fees: Transactions on the Ethereum blockchain often incur gas fees, making it expensive to mint, buy, or sell NFTs, especially during periods of high network congestion.
+  3. Speculation: Many people buy NFTs purely for speculative purposes, hoping to resell them at a higher price. This can create market bubbles where the value of NFTs might collapse suddenly.
+  4. Intellectual Property Issues: Owning an NFT doesn't necessarily mean you own the copyright or intellectual property of the underlying asset.
+
+#### What If There Were No NFTs?
+Without NFTs, there would be no standardized way to verify digital ownership, authenticity, or scarcity. Artists and creators would continue to rely on intermediaries to distribute and monetize their content. Digital assets would remain less valuable due to the lack of verifiable ownership.
+
+
+___
 
 Till 06:57:16 - https://youtu.be/umepbfKp5rI?t=25036
 Rivision 01:30:00 - https://youtu.be/umepbfKp5rI?t=5454
