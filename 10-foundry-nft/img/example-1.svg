@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#f0f0f0"/>
+
+  <!-- Outer Circle -->
+  <circle cx="100" cy="100" r="80" fill="#4CAF50" stroke="#333" stroke-width="4"/>
+
+  <!-- Inner Shapes -->
+  <polygon points="100,40 120,80 160,80 130,110 140,150 100,130 60,150 70,110 40,80 80,80" 
+           fill="#FF5722" stroke="#333" stroke-width="3"/>
+
+  <!-- Text Label -->
+  <text x="50%" y="180" text-anchor="middle" font-family="Arial" font-size="20" fill="#333">My NFT</text>
+</svg>
+

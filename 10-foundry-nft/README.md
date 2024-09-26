@@ -2,7 +2,10 @@
  - [(20:07:52) | Setup NFTs](https://youtu.be/-1GB6m39-rM?t=72472)
  - [(20:21:59) | Hosting on IPFS](https://youtu.be/-1GB6m39-rM?t=73319)
  - [(20:32:00) | Deploy basic NFT](https://youtu.be/-1GB6m39-rM?t=73920)
- - [(20:33:23) | Test basic NFT](https://youtu.be/-1GB6m39-rM?t=74003)
+ - [(20:33:23) | Test, Deploy basic NFT](https://youtu.be/-1GB6m39-rM?t=74003)
+ - [(20:55:50) | Creating, encoding, decoding SVG](https://youtu.be/-1GB6m39-rM?t=75352)
+
+ - Till - https://youtu.be/-1GB6m39-rM?t=74623
 
 #### IPFS (InterPlanetary File System)
 IPFS is a decentralized storage system that allows users to store and share files in a distributed manner, much like a peer-to-peer network.
@@ -10,6 +13,7 @@ IPFS is a decentralized storage system that allows users to store and share file
 #### How IPFS Works:
  - Content-based addressing: Instead of locating files by their location (like in HTTP), IPFS uses the file's content to generate a unique hash. This hash is the file's identifier, making it immutable—if the file changes, the hash changes.
  - Distributed Storage: Files are broken into smaller chunks and distributed across a network of nodes. Anyone can retrieve the file using its unique hash.
+ - Upload 2 files to IPFS desktop, one is a file another one is the json, with some attributes file pointing to orginal file
 #### Examples:
  - Storing NFTs: Rather than storing large files (e.g., images, videos) on-chain, NFTs use IPFS to store files. The NFT will contain a token URI pointing to the IPFS hash where the image or metadata is stored.
     - Example: The NFT metadata might look like: __ipfs://QmHash12345__ , linking to an image hosted on IPFS.
@@ -18,6 +22,39 @@ IPFS is a decentralized storage system that allows users to store and share file
  - Decentralization: Files are not reliant on a single server, reducing the risk of censorship or loss.
  - Immutability: Once stored, content cannot be altered, ensuring data integrity.
 IPFS is widely used for NFTs and decentralized applications (dApps) for storing assets in a secure, decentralized manner.
+
+#### Compare string
+ - Use **chisel** for interactive terminal or shell for solidity
+   ```
+   Welcome to Chisel! Type `!help` to show available commands.
+   ➜ string memory cat  = "cat";
+   ➜ string memory dog = "dog";
+   ➜ cat
+   Type: string
+   ├ UTF-8: cat
+   ├ Hex (Memory):
+   ├─ Length ([0x00:0x20]): 0x0000000000000000000000000000000000000000000000000000000000000003
+   ├─ Contents ([0x20:..]): 0x6361740000000000000000000000000000000000000000000000000000000000
+   ├ Hex (Tuple Encoded):
+   ├─ Pointer ([0x00:0x20]): 0x0000000000000000000000000000000000000000000000000000000000000020
+   ├─ Length ([0x20:0x40]): 0x0000000000000000000000000000000000000000000000000000000000000003
+   └─ Contents ([0x40:..]): 0x6361740000000000000000000000000000000000000000000000000000000000
+   ➜ bytes memory encodedCat = abi.encodePacked(cat);
+   ➜ encodedCat
+   Type: dynamic bytes
+   ├ Hex (Memory):
+   ├─ Length ([0x00:0x20]): 0x0000000000000000000000000000000000000000000000000000000000000003
+   ├─ Contents ([0x20:..]): 0x6361740000000000000000000000000000000000000000000000000000000000
+   ├ Hex (Tuple Encoded):
+   ├─ Pointer ([0x00:0x20]): 0x0000000000000000000000000000000000000000000000000000000000000020
+   ├─ Length ([0x20:0x40]): 0x0000000000000000000000000000000000000000000000000000000000000003
+   └─ Contents ([0x40:..]): 0x6361740000000000000000000000000000000000000000000000000000000000
+   ➜ bytes32 catHash = keccak256(encodedCat);
+   ➜ catHash
+   Type: bytes32
+   └ Data: 0x52763589e772702fa7977a28b3cfb6ca534f0208a2b2d55f7558af664eac478a
+   ➜ 
+   ```
 
 #### IPFS Installations
  - https://docs.ipfs.tech/install/ipfs-desktop/#ubuntu

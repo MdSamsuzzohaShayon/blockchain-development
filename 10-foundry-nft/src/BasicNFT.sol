@@ -6,6 +6,10 @@ pragma solidity ^0.8.19;
  * https://docs.openzeppelin.com/contracts/5.x/api/token/erc721
  * https://eips.ethereum.org/EIPS/eip-721
  * https://ethereum.org/en/developers/docs/standards/tokens/erc-721/
+ * 
+ * Upload File to IPFS
+ * JSON file: ipfs://QmNhBXAK9sZWJFUQHkEZVFvW2c4RiUuw2ApFuKtdh82hMQ/?filename=1.json
+ * Orginal File: ipfs://QmazuTtERYQ51ffUC8gvK4zuXfMbk9gRVYJh9c9eu2pzss/?filename=1.jpg
  */
 
 import {ERC721} from "@openzeppelin/contracts/token/ERC721/ERC721.sol";
@@ -25,8 +29,8 @@ contract BasicNFT is ERC721 {
     }
 
     // lib/openzeppelin-contracts/contracts/token/ERC721/ERC721.sol
-    function tokenURI(uint256 tokenId) public view override returns(string memory){
+    function tokenURI(uint256 _tokenId) public view override returns(string memory){
         // ipfs://bafybeig37ioir76s7mg5oobetncojcm3c3hxasyd4rvid4jqhy4gkaheg4/?filename=0-PUG.json
-        return s_tokenIdToUri[tokenId];
+        return s_tokenIdToUri[_tokenId];
     }
 }

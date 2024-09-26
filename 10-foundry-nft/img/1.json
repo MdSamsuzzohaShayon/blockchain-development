@@ -1,0 +1,11 @@
+{
+    "name": "1",
+    "description": "This image has been downloaded from google",
+    "image": "ipfs://QmazuTtERYQ51ffUC8gvK4zuXfMbk9gRVYJh9c9eu2pzss/?filename=1.jpg",
+    "attributes": [
+        {
+            "trait_type": "cuteness",
+            "value": 100
+        }
+    ]
+}
