@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#F2F2F2" />
+
+  <!-- Fox Head - Main Shape -->
+  <defs>
+    <!-- Gradient for the head -->
+    <radialGradient id="foxBodyGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#FFA726;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#EF6C00;stop-opacity:1" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Ears -->
+  <polygon points="100,100 150,50 200,100" fill="url(#foxBodyGradient)" stroke="#A64B00" stroke-width="5" />
+  <polygon points="300,100 350,50 400,100" fill="url(#foxBodyGradient)" stroke="#A64B00" stroke-width="5" />
+  
+  <!-- Inner Ears -->
+  <polygon points="120,90 150,60 180,90" fill="#F8BBD0" stroke="#A64B00" stroke-width="2"/>
+  <polygon points="320,90 350,60 380,90" fill="#F8BBD0" stroke="#A64B00" stroke-width="2"/>
+  
+  <!-- Fox Head -->
+  <ellipse cx="250" cy="250" rx="150" ry="180" fill="url(#foxBodyGradient)" stroke="#A64B00" stroke-width="5"/>
+  
+  <!-- Face Shadow Gradient -->
+  <defs>
+    <radialGradient id="faceShadow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#FFA726;stop-opacity:1" />
+    </radialGradient>
+  </defs>
+  <ellipse cx="250" cy="250" rx="130" ry="150" fill="url(#faceShadow)" />
+
+  <!-- Eyes -->
+  <ellipse cx="200" cy="230" rx="35" ry="45" fill="white" stroke="#333" stroke-width="3" />
+  <ellipse cx="300" cy="230" rx="35" ry="45" fill="white" stroke="#333" stroke-width="3" />
+  
+  <!-- Pupils with Shading -->
+  <defs>
+    <radialGradient id="eyeGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="30%" style="stop-color:black;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#333;stop-opacity:1" />
+    </radialGradient>
+  </defs>
+  <circle cx="200" cy="230" r="15" fill="url(#eyeGradient)" />
+  <circle cx="300" cy="230" r="15" fill="url(#eyeGradient)" />
+  
+  <!-- Nose -->
+  <polygon points="240,270 260,270 250,290" fill="black"/>
+  
+  <!-- Mouth -->
+  <path d="M220 290 Q250 310 280 290" stroke="black" stroke-width="5" fill="transparent"/>
+  
+  <!-- Whiskers -->
+  <path d="M200 280 Q150 270 100 280" stroke="black" stroke-width="2" fill="transparent"/>
+  <path d="M300 280 Q350 270 400 280" stroke="black" stroke-width="2" fill="transparent"/>
+  <path d="M200 300 Q150 290 100 300" stroke="black" stroke-width="2" fill="transparent"/>
+  <path d="M300 300 Q350 290 400 300" stroke="black" stroke-width="2" fill="transparent"/>
+  
+  <!-- Face Details - Fur Effect -->
+  <path d="M150 200 Q170 220 190 210" stroke="#A64B00" stroke-width="4" fill="transparent"/>
+  <path d="M350 200 Q330 220 310 210" stroke="#A64B00" stroke-width="4" fill="transparent"/>
+
+</svg>

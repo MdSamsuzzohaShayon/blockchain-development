@@ -4,6 +4,7 @@
  - [(20:32:00) | Deploy basic NFT](https://youtu.be/-1GB6m39-rM?t=73920)
  - [(20:33:23) | Test, Deploy basic NFT](https://youtu.be/-1GB6m39-rM?t=74003)
  - [(20:55:50) | Creating, encoding, decoding SVG](https://youtu.be/-1GB6m39-rM?t=75352)
+ - [(21:02:52) | Mood NFT](https://youtu.be/-1GB6m39-rM?t=75772)
 
  - Till - https://youtu.be/-1GB6m39-rM?t=74623
 
