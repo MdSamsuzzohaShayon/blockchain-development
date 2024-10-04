@@ -6,10 +6,10 @@ pragma solidity ^0.8.19;
  * @dev This contract contains unit tests for the `BasicNFT` contract.
  * It uses Foundry's `Test` contract to create and run automated tests.
  * This contract verifies that the NFT behaves correctly when deployed and interacted with.
- * 
+ *
  * Foundry is a popular framework for testing and deploying Solidity contracts, and `Test.sol`
  * provides a variety of tools to make testing smart contracts easy and efficient.
- * 
+ *
  * Links for reference:
  * - Foundry Documentation: https://book.getfoundry.sh/
  * - Test.sol: https://github.com/foundry-rs/forge-std/blob/master/src/Test.sol
@@ -20,7 +20,7 @@ import {Test} from "forge-std/Test.sol";
 
 // Importing the BasicNFT contract to test its functionality.
 import {BasicNFT} from "src/BasicNFT.sol";
-
+import {DevOpsTools} from "lib/foundry-devops/src/DevOpsTools.sol";
 // Importing the DeployBasicNFT contract to automate the deployment of BasicNFT for testing.
 import {DeployBasicNFT} from "script/DeployBasicNFT.s.sol";
 
@@ -30,12 +30,11 @@ import {DeployBasicNFT} from "script/DeployBasicNFT.s.sol";
  * It uses functions from the Foundry `Test` contract to facilitate testing.
  */
 contract BasicNFTTest is Test {
-
     // State variables
-    DeployBasicNFT public deployer;    // Instance of the DeployBasicNFT contract used to deploy BasicNFT.
-    BasicNFT public basicNft;          // Instance of the deployed BasicNFT contract.
-    address public USER = makeAddr("user");  // Test address representing a user.
-    string public constant ONE = "ipfs://QmNhBXAK9sZWJFUQHkEZVFvW2c4RiUuw2ApFuKtdh82hMQ/?filename=1.json";  // Example token URI.
+    DeployBasicNFT public deployer; // Instance of the DeployBasicNFT contract used to deploy BasicNFT.
+    BasicNFT public basicNft; // Instance of the deployed BasicNFT contract.
+    address public USER = makeAddr("user"); // Test address representing a user.
+    string public constant ONE = "ipfs://QmNhBXAK9sZWJFUQHkEZVFvW2c4RiUuw2ApFuKtdh82hMQ/?filename=1.json"; // Example token URI.
 
     /**
      * @dev The `setUp` function is run before each test case. It deploys the BasicNFT contract
@@ -69,7 +68,7 @@ contract BasicNFTTest is Test {
 
     /**
      * @notice Tests that a user can mint an NFT and their balance increases accordingly.
-     * @dev This function simulates a user minting an NFT and checks if the NFT is successfully minted 
+     * @dev This function simulates a user minting an NFT and checks if the NFT is successfully minted
      *      by verifying the balance and the token URI.
      *      It uses `vm.prank` from Foundry to simulate the minting transaction as a different address.
      */

@@ -5,13 +5,15 @@ pragma solidity ^0.8.19;
  * We can change the mood of NFT
  * If the face is happy we can make them sad, if they are sad we can make them happy
  */
-
 import {ERC721} from "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import {Base64} from "@openzeppelin/contracts/utils/Base64.sol";
 
+// arweave.org - decentralized metadata
+// filecoin.io - decentralized storage
+// nft.storage
+
 contract MoodNFT is ERC721 {
     error MoodNFT__CanNotFlipMood();
-
 
     uint256 private s_tokenCounter;
     string private s_sadSvgImgUri;
@@ -24,10 +26,7 @@ contract MoodNFT is ERC721 {
 
     mapping(uint256 => Mood) private s_tokenIdToMood;
 
-    constructor(
-        string memory happySvgImgUri,
-        string memory sadSvgImgUri
-    ) ERC721("Mood NFT", "MN") {
+    constructor(string memory sadSvgImgUri, string memory happySvgImgUri) ERC721("Mood NFT", "MN") {
         s_tokenCounter = 0;
         s_sadSvgImgUri = happySvgImgUri;
         s_happySvgImgUri = sadSvgImgUri;
@@ -39,17 +38,20 @@ contract MoodNFT is ERC721 {
         s_tokenCounter++;
     }
 
-    function flipMood(uint256 tokenId) public{
+    function flipMood(uint256 tokenId) public {
         // Only want the NFT owner to be able to change the mood
         // Check Ownership and Check Approval
-        bool isApprovedOrOwner = (getApproved(tokenId) == msg.sender || isApprovedForAll(ownerOf(tokenId), msg.sender) || ownerOf(tokenId) == msg.sender);
-        if(!isApprovedOrOwner){
+        bool isApprovedOrOwner = (
+            getApproved(tokenId) == msg.sender || isApprovedForAll(ownerOf(tokenId), msg.sender)
+                || ownerOf(tokenId) == msg.sender
+        );
+        if (!isApprovedOrOwner) {
             revert MoodNFT__CanNotFlipMood();
         }
 
-        if(s_tokenIdToMood[tokenId] == Mood.HAPPY){
+        if (s_tokenIdToMood[tokenId] == Mood.HAPPY) {
             s_tokenIdToMood[tokenId] == Mood.SAD;
-        }else{
+        } else {
             s_tokenIdToMood[tokenId] == Mood.HAPPY;
         }
     }
@@ -58,9 +60,7 @@ contract MoodNFT is ERC721 {
         return "data:application/json;base64,";
     }
 
-    function tokenURI(
-        uint256 tokenId
-    ) public view override returns (string memory) {
+    function tokenURI(uint256 tokenId) public view override returns (string memory) {
         string memory imageURI;
 
         if (s_tokenIdToMood[tokenId] == Mood.HAPPY) {

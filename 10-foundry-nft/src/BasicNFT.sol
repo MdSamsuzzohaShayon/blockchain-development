@@ -5,9 +5,9 @@ pragma solidity ^0.8.19;
  * @title BasicNFT
  * @dev A simple NFT contract based on the ERC721 standard. This contract allows minting of unique tokens (NFTs).
  * @dev It uses OpenZeppelin's ERC721 implementation for the NFT functionality.
- * 
- * @notice Non-Fungible Tokens (NFTs) are unique digital assets stored on a blockchain. 
- * Unlike fungible tokens (like Ether), which are interchangeable, NFTs are unique and indivisible. 
+ *
+ * @notice Non-Fungible Tokens (NFTs) are unique digital assets stored on a blockchain.
+ * Unlike fungible tokens (like Ether), which are interchangeable, NFTs are unique and indivisible.
  * NFTs are widely used to represent ownership of digital or physical assets, such as art, music, and other collectibles.
  *
  * Links for reference:
@@ -15,7 +15,7 @@ pragma solidity ^0.8.19;
  * - OpenZeppelin Documentation: https://docs.openzeppelin.com/contracts/5.x/api/token/erc721
  * - ERC-721 Standard (Ethereum Improvement Proposal): https://eips.ethereum.org/EIPS/eip-721
  * - Ethereum Documentation on ERC-721: https://ethereum.org/en/developers/docs/standards/tokens/erc-721/
- * 
+ *
  * @notice The NFTs in this contract can reference digital files like images and metadata stored on IPFS.
  * Example:
  * - Metadata file (JSON): ipfs://QmNhBXAK9sZWJFUQHkEZVFvW2c4RiUuw2ApFuKtdh82hMQ/?filename=1.json
@@ -32,7 +32,6 @@ import {ERC721} from "@openzeppelin/contracts/token/ERC721/ERC721.sol";
  * The contract extends the ERC721 standard provided by OpenZeppelin.
  */
 contract BasicNFT is ERC721 {
-
     /**
      * @dev s_tokenCounter keeps track of the number of NFTs minted.
      * Each minted token gets a unique `tokenId` starting from 0, which increments with each new token.
@@ -51,7 +50,7 @@ contract BasicNFT is ERC721 {
      * @dev The ERC721 constructor is called with two parameters: the name and symbol of the token.
      * - Name: "Dogie"
      * - Symbol: "DOG"
-     * 
+     *
      * @dev The s_tokenCounter is initialized to 0, which means the first minted NFT will have a token ID of 0.
      */
     constructor() ERC721("Dogie", "DOG") {
@@ -87,7 +86,7 @@ contract BasicNFT is ERC721 {
      * The returned URI typically points to the metadata for the NFT, such as JSON metadata stored on IPFS.
      * Example of a token URI: ipfs://<hash>/filename.json
      */
-    function tokenURI(uint256 _tokenId) public view override returns(string memory) {
+    function tokenURI(uint256 _tokenId) public view override returns (string memory) {
         // Return the token URI for the given token ID
         return s_tokenIdToUri[_tokenId];
     }

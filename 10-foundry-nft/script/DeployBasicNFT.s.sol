@@ -4,12 +4,12 @@ pragma solidity ^0.8.19;
 /**
  * @title DeployBasicNFT Script
  * @dev This contract is used to deploy the `BasicNFT` contract.
- * It uses Foundry's `Script` to automate the deployment process. 
+ * It uses Foundry's `Script` to automate the deployment process.
  * The contract deploys an instance of `BasicNFT` and returns its address.
- * 
+ *
  * Foundry is a popular testing and development framework for Solidity projects.
  * The `Script` contract from Foundry provides useful methods for scripting deployments and interactions with contracts.
- * 
+ *
  * Links for reference:
  * - Foundry Documentation: https://book.getfoundry.sh/
  * - Script.sol: https://github.com/foundry-rs/forge-std/blob/master/src/Script.sol
@@ -26,15 +26,14 @@ import {BasicNFT} from "src/BasicNFT.sol";
  * @dev This contract is used to deploy the BasicNFT contract using Foundry's scripting tools.
  */
 contract DeployBasicNFT is Script {
-
     /**
      * @notice The `run` function automates the process of deploying the BasicNFT contract.
-     * @dev This function uses Foundry's virtual machine (VM) to broadcast transactions, 
+     * @dev This function uses Foundry's virtual machine (VM) to broadcast transactions,
      *      which is necessary for deploying a contract to the blockchain.
      * @dev The function returns the deployed instance of the `BasicNFT` contract.
      * @return basicNft The deployed instance of the `BasicNFT` contract.
      */
-    function run() external returns(BasicNFT) {
+    function run() external returns (BasicNFT) {
         // Start broadcasting transactions. This tells the VM that transactions will be sent.
         vm.startBroadcast();
 
