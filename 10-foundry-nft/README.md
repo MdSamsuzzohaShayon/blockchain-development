@@ -7,8 +7,9 @@
  - [(21:02:52) | Mood NFT, Test & Get metadata as a JSON file from SVG](https://youtu.be/-1GB6m39-rM?t=75772)
  - [(21:24:41) | Flip the mood, Deploy, Test](https://youtu.be/-1GB6m39-rM?t=77081)
  - [(21:49:31) | Deploy NFT, Mint NFT, Flip Mood, Anvil demo](https://youtu.be/-1GB6m39-rM?t=78571)
+ - [(21:56:12) | Encoding, Opcodes, and calls](https://youtu.be/-1GB6m39-rM?t=78972)
 
- - Till - https://youtu.be/-1GB6m39-rM?t=78571
+ - Till - https://youtu.be/-1GB6m39-rM?t=78972
 
 #### IPFS (InterPlanetary File System)
 IPFS is a decentralized storage system that allows users to store and share files in a distributed manner, much like a peer-to-peer network.
