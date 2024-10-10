@@ -5,6 +5,16 @@
 
  Till - https://youtu.be/-1GB6m39-rM?t=84393
 
+#### Project
+ 1. (Relative stability) anchored or pegged -> $1 (make sure our coin is always worth $1). 
+   a. Chainlink pri9ce feed, 
+   b. Set a functin to exchange ETH & BTC -> $$$
+ 2. Stability Mechanism (Minting): Algorithmic (Decentralized)
+   a. People can only mint the stablecoin with enough collateral (coded)
+ 3. Collateral: Exogenous (Crypto) -> We are going to use:
+   a. wETH (ERC20) 
+   b. wBTC (ERC20) for the collateral
+
 #### DeFi, short for Decentralized Finance
 
 DeFi, short for Decentralized Finance, refers to a broad category of financial services and applications built on blockchain technology, typically using smart contracts on networks like Ethereum. DeFi aims to recreate and improve traditional financial systems in a decentralized, permissionless, and transparent way.
