@@ -24,3 +24,6 @@ make deploy
 make deployMoood
 cast send <DEPLOYED_CONTRACT_ADDRESS> "mintNft()" --private-key <ACCOUNT_PRIVATE_KEY_ANVIL> --rpc-url http://localhost:8545
 cast send <DEPLOYED_CONTRACT_ADDRESS> "flipMood(uint256)" 0 --private-key <ACCOUNT_PRIVATE_KEY_ANVIL> --rpc-url http://localhost:8545
+cast sig "transferFrom(address, address, uint256)"
+# https://openchain.xyz/signatures?query=0x23b872dd
+cast --calldata-decode "transferFrom(address, address, uint256)" 0x5FbDB2315678afecb367f032d93F642f64180aa3

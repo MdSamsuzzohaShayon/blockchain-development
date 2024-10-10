@@ -10,7 +10,7 @@
  - [(21:56:12) | Encoding, Opcodes, and calls](https://youtu.be/-1GB6m39-rM?t=78972)
  - [(22:26:50) | Encoding function calls directly](https://youtu.be/-1GB6m39-rM?t=80810)
 
- - Till - https://youtu.be/-1GB6m39-rM?t=81682
+ - Till - https://youtu.be/-1GB6m39-rM?t=82360
 
 #### IPFS (InterPlanetary File System)
 IPFS is a decentralized storage system that allows users to store and share files in a distributed manner, much like a peer-to-peer network.
@@ -136,6 +136,11 @@ IPFS is widely used for NFTs and decentralized applications (dApps) for storing 
    c2UgY3g9IjI2MCIgY3k9IjI1MCIgcng9IjUwIiByeT0iMzAiIGZpbGw9InVybCgjY2hlZWtHcmFk
    aWVudCkiIC8+Cjwvc3ZnPgo=
    ```
+
+#### Check the transaction
+ 1. Check the address (read the function)
+ 2. Check the function selector
+ 3. Decode the calldata
 ____
 ## Foundry
 
