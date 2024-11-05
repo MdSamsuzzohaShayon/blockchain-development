@@ -2,12 +2,13 @@
  - [(22:52:51) | Introduction to DeFi or Stablecoin](https://youtu.be/-1GB6m39-rM?t=82371)
  - [(23:05:10) | What is stablecoin?](https://youtu.be/-1GB6m39-rM?t=83110)
  - [(23:33:27) | Decentralized stablecoin](https://youtu.be/-1GB6m39-rM?t=84807)
+ - [(23:47:27) | Create DSC Engine](https://youtu.be/-1GB6m39-rM?t=85647)
 
- Till - https://youtu.be/-1GB6m39-rM?t=84393
+ Till - https://youtu.be/-1GB6m39-rM?t=87791
 
 #### Project
  1. (Relative stability) anchored or pegged -> $1 (make sure our coin is always worth $1). 
-   a. Chainlink pri9ce feed, 
+   a. Chainlink price feed, 
    b. Set a functin to exchange ETH & BTC -> $$$
  2. Stability Mechanism (Minting): Algorithmic (Decentralized)
    a. People can only mint the stablecoin with enough collateral (coded)
@@ -144,6 +145,9 @@ This system helps DAI maintain a stable value even in volatile markets, making i
  - https://defillama.com/protocol/aave#information
  - https://app.uniswap.org/
  - https://explore.flashbots.net/
+
+#### Creating blockchain from scratch
+ - ChatGPT: https://chatgpt.com/share/6717df08-5020-8003-9a26-04ce7e5753f4
 
 ____
 ## Foundry

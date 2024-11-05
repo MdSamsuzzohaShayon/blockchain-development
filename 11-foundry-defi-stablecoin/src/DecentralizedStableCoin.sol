@@ -12,21 +12,20 @@ import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
  * It focuses on minting and burning stablecoins under the control of the owner (governed by a separate engine).
  */
 contract DecentralizedStableCoin is ERC20Burnable, Ownable {
-
     // Error for when an operation tries to burn or mint a zero or negative amount.
     error DecentralizedStableCoin__MustBeMoreThanZero();
-    
+
     // Error for when the burn amount exceeds the sender's balance.
     error DecentralizedStableCoin__BurnAmountExceedsBalance();
-    
+
     // Error for when a mint is attempted to the zero address.
     error DecentralizedStableCoin__NotZeroAddress();
-    
+
     /**
      * @dev Initializes the token with a name and symbol and sets the owner.
      * @notice Token name is "DecentralizedStableCoin" and symbol is "DSC".
      * Ownership is assigned to the provided address.
-     * 
+     *
      * Why are we doing this?
      * - We need a named stablecoin (DSC) for the decentralized system.
      * - Assigning ownership allows only the owner to control critical functions like minting and burning.
@@ -37,7 +36,7 @@ contract DecentralizedStableCoin is ERC20Burnable, Ownable {
      * @notice Allows the owner to burn a specific amount of stablecoins.
      * @dev Only the owner can burn tokens to reduce supply.
      * @param _amount The amount of tokens to burn, must be greater than zero.
-     * 
+     *
      * Why are we doing this?
      * - Burning tokens reduces the total supply, which is a crucial mechanism for managing the stablecoin's value relative to the US dollar.
      * - Limiting this function to the owner ensures centralized control over the burn process to maintain stability.
@@ -67,7 +66,7 @@ contract DecentralizedStableCoin is ERC20Burnable, Ownable {
      * @dev Only the owner can mint tokens to control supply.
      * @param _to The address to mint tokens to, must not be the zero address.
      * @param _amount The number of tokens to mint, must be greater than zero.
-     * 
+     *
      * Why are we doing this?
      * - Minting increases the supply of stablecoins in circulation, which is necessary to meet demand or adjust the system's collateral ratio.
      * - Restricting minting to the owner ensures centralized control to prevent inflation or instability.
