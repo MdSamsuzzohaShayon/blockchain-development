@@ -1,6 +1,6 @@
 # Real Estate NFT DApp
 
- - Till __https://youtu.be/jcgfQEbptdo?t=8897__
+ - Till __https://youtu.be/jcgfQEbptdo?t=12114__
 
 ## Technology Stack & Tools
 
