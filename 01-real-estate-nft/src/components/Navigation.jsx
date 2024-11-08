@@ -10,7 +10,7 @@ import logo from '../assets/logo.svg';
 const Navigation = ({ account, setAccount }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  const connectWallet = async () => {
+  const connectHandler = async () => {
     if (window.ethereum) {
       const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
       setAccount(accounts[0]);
@@ -57,7 +57,7 @@ const Navigation = ({ account, setAccount }) => {
           <Button
             color="inherit"
             startIcon={<AccountBalanceWalletIcon />}
-            onClick={connectWallet}
+            onClick={connectHandler}
           >
             Connect Wallet
           </Button>
@@ -89,7 +89,7 @@ const Navigation = ({ account, setAccount }) => {
               <ListItemText primary={item.text} />
             </ListItem>
           ))}
-          <ListItem button onClick={connectWallet}>
+          <ListItem button onClick={connectHandler}>
             <ListItemIcon sx={{ color: '#fff' }}>
               <AccountBalanceWalletIcon />
             </ListItemIcon>

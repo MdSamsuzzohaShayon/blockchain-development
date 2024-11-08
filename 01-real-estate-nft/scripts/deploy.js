@@ -28,9 +28,9 @@ async function main() {
   In real-life terms, these are digital documents representing property details.
   */
   const propertyMetadatas = [
-    "ipfs://Qme6h3W3Wn7GjuguBHRYVZ258qcnk1L4iesUsScFgRCBhd", // 1.json
-    "ipfs://QmQjPis6fW2887u8xAhzfFmhPhHsr6npJbJvEhonAcdGmK", // 2.json
-    "ipfs://QmPajSdW6oBJKgptmcqTdAmswsPgmAUm63ShUc9jTNXnZW", // 3.json
+    "https://ipfs.io/ipfs/Qme6h3W3Wn7GjuguBHRYVZ258qcnk1L4iesUsScFgRCBhd?filename=1.json", // 1.json
+    "https://ipfs.io/ipfs/QmNr6Vy6YgLoVjRdSd5XtjFcBZ2HUotovnmhPzZfz2kwqG?filename=2.json", // 2.json
+    "https://ipfs.io/ipfs/QmRFimc5vujETN4yqXcXwKpsZVNvv5btg8HX11CU7t5Eva?filename=3.json", // 3.json
   ];
 
   // Mint NFTs for each property. The seller is the initial owner of each property.
