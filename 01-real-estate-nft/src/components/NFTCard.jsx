@@ -1,7 +1,7 @@
 // NFTCard.js
 import { Card, CardContent, CardMedia, Typography, Button, Box } from '@mui/material';
 
-const NFTCard = ({ title, description, imageUrl, price, address }) => {
+const NFTCard = ({ title, description, imageUrl, price, address, attributes }) => {
   return (
     <Card
       sx={{
@@ -30,6 +30,11 @@ const NFTCard = ({ title, description, imageUrl, price, address }) => {
         </Typography>
         <Typography variant="body2" color="text.secondary">
           {address}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          <strong>{attributes[2].value}</strong> bds |
+          <strong>{attributes[3].value}</strong> ba |
+          <strong>{attributes[4].value}</strong> sqft
         </Typography>
         <Typography variant="h6" sx={{ mt: 1, fontWeight: 'bold' }}>
           {price} ETH
