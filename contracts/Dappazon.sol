@@ -1,4 +1,9 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.9;
+pragma solidity ^0.8.28;
 
-contract Dappazon {}
+// Uncomment this line to use console.log
+// import "hardhat/console.sol";
+
+contract Dappazon {
+    
+}
