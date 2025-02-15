@@ -12,6 +12,7 @@
 ## Tutorial
  - [Tutorial](https://www.youtube.com/watch?v=jcgfQEbptdo&t=40862s), [Docs](https://docs.soliditylang.org/en/v0.8.27/)
  - [(01:39:12) | Blockchain based real estate **NFT** website](https://youtu.be/jcgfQEbptdo?t=5953), [Starter code](https://github.com/dappuniversity/millow/tree/starter_code)
+ - [TIll](https://youtu.be/jcgfQEbptdo?t=20196)
 
 ## License
 This license is under MIT
