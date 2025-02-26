@@ -1,20 +1,39 @@
-// This setup uses Hardhat Ignition to manage smart contract deployments.
-// Learn more about it at https://hardhat.org/ignition
+// Deploying with hardhat scripts -> https://hardhat.org/ignition/docs/guides/scripts
+// Deploying your contracts, hardhat ignition -> https://hardhat.org/hardhat-runner/docs/guides/deploying
 
 import { buildModule } from "@nomicfoundation/hardhat-ignition/modules";
-
-const JAN_1ST_2030 = 1893456000;
-const ONE_GWEI: bigint = 1_000_000_000n;
+import itemsData from "../../items.json";
+import { ethers } from "hardhat"; // Import ethers for conversion
 
 const DappazonModule = buildModule("DappazonModule", (m) => {
-  const unDappazonTime = m.getParameter("unDappazonTime", JAN_1ST_2030);
-  const DappazonedAmount = m.getParameter("DappazonedAmount", ONE_GWEI);
+  // Define deployer account (first account from Hardhat)
+  const deployer = m.getAccount(0);
 
-  const Dappazon = m.contract("Dappazon", [unDappazonTime], {
-    value: DappazonedAmount,
+  // Deploy contract using deployer account
+  const dappazon = m.contract("Dappazon", [], { from: deployer });
+
+  // Seed contract with items, ensuring deployer lists them
+  itemsData.items.forEach((item, index) => {
+    m.call(
+      dappazon,
+      "list",
+      [
+        item.id,
+        item.name,
+        item.category,
+        item.image,
+        ethers.parseUnits(item.price, "ether"), // ✅ Convert price from ETH to Wei
+        item.rating,
+        item.stock,
+      ],
+      {
+        id: `DappazonModule_ListItem_${index}`, // ✅ Unique ID
+        from: deployer, // ✅ Ensures deployer is listing the item
+      }
+    );
   });
 
-  return { Dappazon };
+  return { dappazon };
 });
 
 export default DappazonModule;
