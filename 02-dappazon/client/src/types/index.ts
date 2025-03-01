@@ -1,4 +1,4 @@
-import type { BaseContract, BigNumberish, ContractTransaction } from "ethers";
+import type { BaseContract, BigNumberish, ContractTransaction, ethers } from "ethers";
 
 export interface IHomeState {
     account: string | null;
@@ -38,3 +38,6 @@ export interface IProduct {
     rating: number;
     stock: number;
 }
+
+
+export type TEvents = (ethers.EventLog | ethers.Log)[] | undefined;
