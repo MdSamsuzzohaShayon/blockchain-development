@@ -20,7 +20,7 @@ let signer: ethers.JsonRpcSigner | null = null;
 let provider: ethers.BrowserProvider;
 
 
-// Function to connect wallet
+// Function to connect wallet (A user will connect his wallet with this)
 const connectWallet = async () => {
   if (!window.ethereum) {
     console.log("MetaMask is not installed");
