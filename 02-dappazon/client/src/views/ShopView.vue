@@ -45,23 +45,45 @@ const openModal = (product: IProduct) => {
     modalOpen.value = true;
 };
 
+
+
 const handleBuy = async (productId: number, productCost: number) => {
     try {
-        if (!dappazon.value || !signer.value) {
-            console.error("Contract or signer is not initialized.");
+        if (!window.ethereum) {
+            console.error("No Ethereum provider found");
             return;
         }
 
-        const contractWithSigner = dappazon.value.connect(signer.value);
-        const transaction = await contractWithSigner.buy(productId, { value: ethers.parseEther(productCost.toString()) });
+        const browserProvider = new ethers.BrowserProvider(window.ethereum);
+        const signer = await browserProvider.getSigner(); // Get the signer
+
+        const network = await browserProvider.getNetwork();
+        const chainId = network.chainId.toString() as keyof typeof config;
+        const contractAddress = config[chainId]?.dappazon?.address;
+
+        if (!contractAddress) {
+            console.error("Contract address not found in config");
+            return;
+        }
+
+        // Attach the signer to the contract
+        const dappazonContract = new ethers.Contract(contractAddress, ABI, signer);
+
+        const valueInWei = ethers.parseEther(productCost.toString());
+
+        console.log("Sending transaction...");
+        const transaction = await dappazonContract.buy(productId, { value: productCost });
 
         console.log("Transaction sent:", transaction);
         await transaction.wait();
         console.log("Transaction confirmed.");
+
     } catch (error) {
         console.error("Error while buying:", error);
     }
 };
+
+
 
 
 // On component mounted
@@ -93,6 +115,9 @@ onMounted(async () => {
         }
     }
 });
+
+
+
 </script>
 
 <style scoped>
